@@ -1,0 +1,58 @@
+<?php
+/**
+ * @author    Christof Moser <contact@actra.ch>
+ * @copyright Actra AG, Embrach, Switzerland, www.actra.ch
+ * @license   MIT
+ */
+
+declare(strict_types=1);
+
+namespace WHMCS\Module\Registrar\Actra\action;
+
+use WHMCS\Module\Registrar\Actra\settings\ModuleSettings;
+
+// See https://developers.whmcs.com/domain-registrars/config-options/
+class GetConfigArray extends AbstractAction
+{
+    public readonly array $config;
+
+    protected function execute(): void
+    {
+        $this->config = [
+            'FriendlyName' => [
+                'Type' => 'System',
+                'Value' => ModuleSettings::FRIENDLY_DISPLAY_NAME,
+            ],
+            'Description' => [
+                'Type' => 'System',
+                'Value' => ModuleSettings::DESCRIPTION,
+            ],
+            ModuleSettings::CONFIG_API_URL => [
+                'FriendlyName' => 'API URL',
+                'Type' => 'text',
+                'Size' => '25',
+                'Default' => '',
+                'Description' => 'https://api.example.com/v1/',
+            ],
+            ModuleSettings::CONFIG_API_USERNAME => [
+                'FriendlyName' => 'API Username',
+                'Type' => 'text',
+                'Size' => '25',
+                'Default' => '',
+                'Description' => '',
+            ],
+            ModuleSettings::CONFIG_API_KEY => [
+                'FriendlyName' => 'API Key',
+                'Type' => 'password',
+                'Size' => '25',
+                'Default' => '',
+                'Description' => '',
+            ],
+            ModuleSettings::CONFIG_LOG => [
+                'FriendlyName' => 'Log',
+                'Type' => 'yesno',
+                'Description' => 'Tick to enable extra logging to module log file.',
+            ],
+        ];
+    }
+}

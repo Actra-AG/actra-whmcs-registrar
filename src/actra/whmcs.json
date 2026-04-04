@@ -1,0 +1,26 @@
+{
+    "schema": "1.0",
+    "type": "whmcs-registrars",
+    "name": "actra",
+    "license": "MIT",
+    "category": "registrar",
+    "description": {
+        "name": "Actra Registrar Module",
+        "tagline": "A swiss web agency that provides web development, web hosting, domain registration, email and more.",
+        "features": [
+            "Provide functionality for registering, transferring and renewing of domains"
+        ]
+    },
+    "logo": {
+        "filename": "logo.png"
+    },
+    "support": {
+        "homepage": "https:\/\/www.actra.ch\/"
+    },
+    "authors": [
+        {
+            "name": "Christof Moser",
+            "homepage": "https:\/\/www.actra.ch\/"
+        }
+    ]
+}
