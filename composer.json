@@ -1,21 +1,22 @@
 {
-    "name": "actra/actra-whmcs-registrar",
-    "description": "Actra Registrar Module for WHMCS.",
-    "type": "whmcs-registrar",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Christof Moser",
-            "homepage": "https://www.actra.ch/"
-        }
-    ],
-    "require": {
-        "php": ">=8.3"
-    },
-    "autoload": {
-        "psr-4": {
-            "WHMCS\\Module\\Registrar\\Actra\\": "src/actra/lib/"
-        }
-    },
-    "homepage": "https://www.actra.ch/"
+  "name": "actra/actra-whmcs-registrar",
+  "description": "Actra Registrar Module for WHMCS.",
+  "type": "whmcs-registrar",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christof Moser",
+      "homepage": "https://www.actra.ch/"
+    }
+  ],
+  "require": {
+    "php": ">=8.3",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "WHMCS\\Module\\Registrar\\Actra\\": "src/actra/lib/"
+    }
+  },
+  "homepage": "https://www.actra.ch/"
 }

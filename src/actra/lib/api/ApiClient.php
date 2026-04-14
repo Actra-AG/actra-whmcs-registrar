@@ -72,16 +72,27 @@ class ApiClient
             option: CURLOPT_TIMEOUT,
             value: $timeoutInSeconds
         );
-        curl_setopt(
-            handle: $ch,
-            option: CURLOPT_HTTPAUTH,
-            value: CURLAUTH_BEARER
-        );
-        curl_setopt(
-            handle: $ch,
-            option: CURLOPT_XOAUTH2_BEARER,
-            value: $this->apiKey
-        );
+        if(defined(constant_name: 'CURLOPT_XOAUTH2_BEARER')) {
+            curl_setopt(
+                handle: $ch,
+                option: CURLOPT_HTTPAUTH,
+                value: CURLAUTH_BEARER
+            );
+            curl_setopt(
+                handle: $ch,
+                option: CURLOPT_XOAUTH2_BEARER,
+                value: $this->apiKey
+            );
+        } else {
+            curl_setopt(
+                handle: $ch,
+                option: CURLOPT_HTTPHEADER,
+                value: [
+                    'Authorization: Bearer ' . $this->apiKey,
+                    'Content-Type: application/x-www-form-urlencoded'
+                ]
+            );
+        }
         $response = curl_exec(handle: $ch);
         if (curl_errno(handle: $ch)) {
             throw new Exception(

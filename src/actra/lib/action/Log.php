@@ -25,8 +25,16 @@ class Log
                 }
             }
         );
+        $filePath = dirname(path: __FILE__) . '/../log/actra.log';
+        $dirPath = dirname(path: $filePath);
+        if (!is_dir(filename: $dirPath)) {
+            mkdir(
+                directory: $dirPath,
+                recursive: true
+            );
+        }
         $handle = fopen(
-            filename: dirname(path: __FILE__) . '/../log/actra.log',
+            filename: $filePath,
             mode: 'a'
         );
         fwrite(
