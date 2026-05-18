@@ -46,7 +46,7 @@ After installation, you may need to move or symlink the module files to your WHM
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ## Support
 

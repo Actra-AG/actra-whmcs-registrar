@@ -45,7 +45,7 @@ readonly class ApiInfoDomain
         $i = 0;
         foreach ($apiClient->getFromResponse(key: 'nameserver') as $nameserver) {
             $i++;
-            $nameservers['ns' . $i . '_punycode'] = $nameserver;
+            $nameservers['ns' . $i] = $nameserver;
         }
         $this->nameservers = $nameservers;
         $this->registrantIdentifier = (string)$apiClient->getFromResponse(key: 'registrant');
