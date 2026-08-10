@@ -18,14 +18,42 @@ readonly class ApiTransferDomain
         ApiClient $apiClient,
         string $asciiDomainName,
         string $authCode,
-        ?string $newOwnerContact
+        ?array $newOwnerContactData,
+        ?array $newAdminContactData,
+        ?array $newTechContactData,
+        ?array $newBillingContactData,
+        ?array $newNameservers
     ) {
         $postFields = [
             'domainName' => $asciiDomainName,
             'authCode' => $authCode,
         ];
-        if ($newOwnerContact !== null) {
-            $postFields['newOwnerContact'] = $newOwnerContact;
+        if ($newOwnerContactData !== null) {
+            $postFields['newOwnerContactData'] = json_encode(
+                value: $newOwnerContactData,
+                flags: JSON_THROW_ON_ERROR
+            );
+        }
+        if ($newAdminContactData !== null) {
+            $postFields['newAdminContactData'] = json_encode(
+                value: $newAdminContactData,
+                flags: JSON_THROW_ON_ERROR
+            );
+        }
+        if ($newTechContactData !== null) {
+            $postFields['newTechContactData'] = json_encode(
+                value: $newTechContactData,
+                flags: JSON_THROW_ON_ERROR
+            );
+        }
+        if ($newBillingContactData !== null) {
+            $postFields['newBillingContactData'] = json_encode(
+                value: $newBillingContactData,
+                flags: JSON_THROW_ON_ERROR
+            );
+        }
+        if ($newNameservers !== null) {
+            $postFields['newNameservers'] = $newNameservers;
         }
         $apiClient->call(
             action: 'transferDomain',

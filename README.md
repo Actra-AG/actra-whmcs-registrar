@@ -16,6 +16,16 @@ This module provides functionality for registering, transferring, and renewing d
 - Manage Contact Details
 - DNSSEC Support
 
+## Transfer Behavior
+
+Incoming domain transfers submit WHMCS contact data directly to the Actra Domains API.
+The Actra Domains backend resolves the appropriate registry from the TLD and creates or
+reuses matching contacts automatically.
+
+When available, separate WHMCS Admin, Tech, and Billing contact data is submitted for
+the transfer. If role-specific contact data is incomplete or unavailable, the module
+falls back to the registrant contact data.
+
 ## Installation
 
 ### Via Composer (Recommended)
