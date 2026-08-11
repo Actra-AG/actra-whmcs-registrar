@@ -26,7 +26,7 @@ readonly class ApiInfoDomain
     public ?DomainContact $billing;
     public ?DomainContact $admin;
     public string $domainStatus;
-    public Carbon $expiryDate;
+    public ?Carbon $expiryDate;
     public bool $hasTransferLock;
     public DsRecordCollection $dsRecordCollection;
 
@@ -88,9 +88,10 @@ readonly class ApiInfoDomain
         $this->billing = $billing;
         $this->admin = $admin;
         $this->domainStatus = current(array: $apiClient->getFromResponse(key: 'status'));
-        $this->expiryDate = Carbon::parse(
-            time: $apiClient->getFromResponse(key: 'expiryDate')
-        );
+        $expiryDate = $apiClient->getFromResponse(key: 'expiryDate');
+        $this->expiryDate = $expiryDate === null || $expiryDate === ''
+            ? null
+            : Carbon::parse(time: $expiryDate);
         $this->hasTransferLock = in_array(
             needle: $this->domainStatus,
             haystack: [

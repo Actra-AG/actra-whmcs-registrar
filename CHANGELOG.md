@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.3.1
+
+### Fixed
+
+- Fixed a runtime type error when the API returns nullable domain information fields.
+- Fixed handling of domains without an expiry date in the domain information response.
+
 ## v0.3.0
 
 ### Added

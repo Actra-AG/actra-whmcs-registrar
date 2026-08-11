@@ -211,7 +211,7 @@ class ApiClient
         }
     }
 
-    public function getFromResponse(string $key): string|array|bool|object
+    public function getFromResponse(string $key): string|array|bool|object|null
     {
         if (
             !property_exists(
