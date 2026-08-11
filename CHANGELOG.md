@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.2
+
+### Fixed
+
+- Enabled IRTP handling for `.com` domains by matching WHMCS TLD values without a leading dot.
+
 ## v0.3.1
 
 ### Fixed

@@ -38,7 +38,7 @@ class GetDomainInformation extends AbstractAction
             ->setIdProtectionStatus(idProtectionStatus: false)
             ->setDnsManagementStatus(dnsManagementStatus: false)
             ->setEmailForwardingStatus(emailForwardingStatus: false)
-            ->setIsIrtpEnabled(isIrtpEnabled: $params['tld'] == '.com')
+            ->setIsIrtpEnabled(isIrtpEnabled: $params['tld'] == 'com')
             ->setIrtpOptOutStatus(irtpOptOutStatus: false)
             ->setIrtpTransferLock(irtpTransferLock: false)
             ->setDomainContactChangePending(domainContactChangePending: false)
