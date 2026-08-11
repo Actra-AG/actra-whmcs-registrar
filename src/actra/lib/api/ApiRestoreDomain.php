@@ -14,9 +14,9 @@ readonly class ApiRestoreDomain
         ApiClient $apiClient,
         string $asciiDomainName
     ) {
-        $apiClient->call(
-            action: 'restoreDomain',
-            postFields: [
+        $apiClient->post(
+            path: 'restoreDomain',
+            query: [
                 'domainName' => $asciiDomainName,
             ]
         );

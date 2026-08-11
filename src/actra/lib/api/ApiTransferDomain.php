@@ -24,40 +24,29 @@ readonly class ApiTransferDomain
         ?array $newBillingContactData,
         ?array $newNameservers
     ) {
-        $postFields = [
+        $body = [
             'domainName' => $asciiDomainName,
             'authCode' => $authCode,
         ];
         if ($newOwnerContactData !== null) {
-            $postFields['newOwnerContactData'] = json_encode(
-                value: $newOwnerContactData,
-                flags: JSON_THROW_ON_ERROR
-            );
+            $body['newOwnerContactData'] = $newOwnerContactData;
         }
         if ($newAdminContactData !== null) {
-            $postFields['newAdminContactData'] = json_encode(
-                value: $newAdminContactData,
-                flags: JSON_THROW_ON_ERROR
-            );
+            $body['newAdminContactData'] = $newAdminContactData;
         }
         if ($newTechContactData !== null) {
-            $postFields['newTechContactData'] = json_encode(
-                value: $newTechContactData,
-                flags: JSON_THROW_ON_ERROR
-            );
+            $body['newTechContactData'] = $newTechContactData;
         }
         if ($newBillingContactData !== null) {
-            $postFields['newBillingContactData'] = json_encode(
-                value: $newBillingContactData,
-                flags: JSON_THROW_ON_ERROR
-            );
+            $body['newBillingContactData'] = $newBillingContactData;
         }
         if ($newNameservers !== null) {
-            $postFields['newNameservers'] = $newNameservers;
+            $body['newNameservers'] = $newNameservers;
         }
-        $apiClient->call(
-            action: 'transferDomain',
-            postFields: $postFields
+
+        $apiClient->post(
+            path: 'transferDomain',
+            body: $body
         );
         $this->isActionPending = $apiClient->getFromResponse(key: 'isActionPending');
         $this->registrant = $apiClient->getFromResponse(key: 'registrant');

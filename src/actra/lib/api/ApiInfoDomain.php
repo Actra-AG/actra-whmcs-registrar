@@ -34,9 +34,9 @@ readonly class ApiInfoDomain
         ApiClient $apiClient,
         string $asciiDomainName
     ) {
-        $apiClient->call(
-            action: 'infoDomain',
-            postFields: [
+        $apiClient->get(
+            path: 'infoDomain',
+            query: [
                 'domainName' => $asciiDomainName,
             ]
         );

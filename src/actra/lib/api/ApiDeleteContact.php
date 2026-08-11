@@ -15,9 +15,9 @@ readonly class ApiDeleteContact
         string $registry,
         string $identifier
     ) {
-        $apiClient->call(
-            action: 'deleteContact',
-            postFields: [
+        $apiClient->delete(
+            path: 'deleteContact',
+            query: [
                 'registry' => $registry,
                 'identifier' => $identifier,
             ]

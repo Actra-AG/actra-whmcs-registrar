@@ -17,9 +17,9 @@ readonly class ApiDeleteDsRecord
         string $asciiDomainName,
         DsRecord $dsRecord
     ) {
-        $apiClient->call(
-            action: 'deleteDsRecord',
-            postFields: [
+        $apiClient->delete(
+            path: 'deleteDsRecord',
+            query: [
                 'domainName' => $asciiDomainName,
                 'keyTag' => $dsRecord->keyTag,
                 'alg' => $dsRecord->algorithm,

@@ -33,13 +33,6 @@ class GetConfigArray extends AbstractAction
                 'Default' => '',
                 'Description' => 'https://api.example.com/v1/',
             ],
-            ModuleSettings::CONFIG_API_USERNAME => [
-                'FriendlyName' => 'API Username',
-                'Type' => 'text',
-                'Size' => '25',
-                'Default' => '',
-                'Description' => '',
-            ],
             ModuleSettings::CONFIG_API_KEY => [
                 'FriendlyName' => 'API Key',
                 'Type' => 'password',

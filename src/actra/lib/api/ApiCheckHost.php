@@ -17,9 +17,9 @@ readonly class ApiCheckHost
         string $registry,
         string $nameserver
     ) {
-        $apiClient->call(
-            action: 'checkHost',
-            postFields: [
+        $apiClient->get(
+            path: 'checkHost',
+            query: [
                 'registry' => $registry,
                 'hostname' => $nameserver,
             ]

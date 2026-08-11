@@ -16,9 +16,9 @@ readonly class ApiResetAuthCode
         ApiClient $apiClient,
         string $asciiDomainName
     ) {
-        $apiClient->call(
-            action: 'resetAuthCode',
-            postFields: [
+        $apiClient->post(
+            path: 'resetAuthCode',
+            query: [
                 'domainName' => $asciiDomainName,
             ]
         );

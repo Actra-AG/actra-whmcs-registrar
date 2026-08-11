@@ -14,9 +14,9 @@ readonly class ApiDeleteDomain
         ApiClient $apiClient,
         string $asciiDomainName
     ) {
-        $apiClient->call(
-            action: 'deleteDomain',
-            postFields: [
+        $apiClient->delete(
+            path: 'deleteDomain',
+            query: [
                 'domainName' => $asciiDomainName,
             ]
         );

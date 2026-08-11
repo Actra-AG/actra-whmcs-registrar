@@ -19,17 +19,16 @@ readonly class ApiCreateDomain
         string $techContact,
         string $billingContact
     ) {
-        $apiClient->call(
-            action: 'createDomain',
-            postFields: array(
+        $apiClient->post(
+            path: 'createDomain',
+            body: [
                 'domainName' => $domainName,
                 'nameservers' => $nameservers,
                 'registrant' => $registrant,
                 'adminContact' => $adminContact,
                 'techContact' => $techContact,
                 'billingContact' => $billingContact,
-                'authCode' => ApiClient::generateEppAuthCode()
-            )
+            ]
         );
     }
 }

@@ -19,9 +19,9 @@ readonly class ApiCreateContact
         string $registry,
         DomainContact $domainContact
     ) {
-        $apiClient->call(
-            action: 'createContact',
-            postFields: [
+        $apiClient->post(
+            path: 'createContact',
+            body: [
                 'registry' => $registry,
                 'name' => $domainContact->name,
                 'organization' => $domainContact->org,

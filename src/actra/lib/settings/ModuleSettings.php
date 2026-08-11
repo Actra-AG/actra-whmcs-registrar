@@ -14,7 +14,6 @@ class ModuleSettings
     public const string DESCRIPTION = 'This module can be used to manage domains with Actra as registrar.';
     public const string API_VERSION = '1.1';
     public const string CONFIG_API_URL = 'APIUrl';
-    public const string CONFIG_API_USERNAME = 'APIUsername';
     public const string CONFIG_API_KEY = 'APIKey';
     public const string CONFIG_LOG = 'Log';
 }

@@ -17,9 +17,9 @@ readonly class ApiCheckContact
         string $registry,
         string $identifier
     ) {
-        $apiClient->call(
-            action: 'checkContact',
-            postFields: [
+        $apiClient->get(
+            path: 'checkContact',
+            query: [
                 'registry' => $registry,
                 'identifier' => $identifier,
             ]

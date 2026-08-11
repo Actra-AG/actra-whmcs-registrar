@@ -19,11 +19,13 @@ readonly class ApiUpdateHost
         array $newIpv6,
         array $removeIpv6
     ) {
-        $apiClient->call(
-            action: 'updateHost',
-            postFields: [
+        $apiClient->patch(
+            path: 'updateHost',
+            query: [
                 'registry' => $registry,
                 'hostname' => $nameserver,
+            ],
+            body: [
                 'newIpv4' => $newIpv4,
                 'removeIpv4' => $removeIpv4,
                 'newIpv6' => $newIpv6,

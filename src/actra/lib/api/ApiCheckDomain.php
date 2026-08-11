@@ -16,9 +16,9 @@ readonly class ApiCheckDomain
         ApiClient $apiClient,
         string $asciiDomainName
     ) {
-        $apiClient->call(
-            action: 'checkDomain',
-            postFields: [
+        $apiClient->get(
+            path: 'checkDomain',
+            query: [
                 'domainName' => $asciiDomainName,
             ]
         );

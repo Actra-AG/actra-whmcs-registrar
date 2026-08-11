@@ -17,9 +17,9 @@ readonly class ApiCreateHost
         array $ipv4,
         array $ipv6
     ) {
-        $apiClient->call(
-            action: 'createHost',
-            postFields: [
+        $apiClient->post(
+            path: 'createHost',
+            body: [
                 'registry' => $registry,
                 'hostname' => $nameserver,
                 'ipv4' => $ipv4,

@@ -15,9 +15,9 @@ readonly class ApiDeleteHost
         string $registry,
         string $nameserver
     ) {
-        $apiClient->call(
-            action: 'deleteHost',
-            postFields: [
+        $apiClient->delete(
+            path: 'deleteHost',
+            query: [
                 'registry' => $registry,
                 'hostname' => $nameserver,
             ]

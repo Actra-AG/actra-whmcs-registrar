@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.3.0
+
+### Added
+
+- Documented a known WHMCS 9.0.x admin-area issue where stale registrar configuration validation warnings can persist in
+  the current admin session after a later successful validation.
+
+### Changed
+
+- Replaced the legacy form-data API request abstraction with explicit REST API requests using JSON bodies and query
+  parameters according to the Actra Domains REST API.
+- Updated domain, contact, host, DNSSEC, and system API wrappers to use explicit GET, POST, PATCH, and DELETE requests.
+- Removed the obsolete API username configuration field from the registrar settings.
+- Updated API key validation to use bearer-token based validation without a username request parameter.
+
 ## v0.2.0
 
 ### Changed

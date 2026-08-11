@@ -23,35 +23,106 @@ class ApiClient
     ) {
     }
 
-    public function call(
-        string $action,
-        array $postFields,
+    public function get(
+        string $path,
+        array $query = [],
         int $timeoutInSeconds = 10
     ): void {
+        $this->request(
+            method: 'GET',
+            path: $path,
+            query: $query,
+            body: null,
+            timeoutInSeconds: $timeoutInSeconds
+        );
+    }
+
+    public function post(
+        string $path,
+        array $query = [],
+        array $body = [],
+        int $timeoutInSeconds = 10
+    ): void {
+        $this->request(
+            method: 'POST',
+            path: $path,
+            query: $query,
+            body: $body,
+            timeoutInSeconds: $timeoutInSeconds
+        );
+    }
+
+    public function patch(
+        string $path,
+        array $query = [],
+        array $body = [],
+        int $timeoutInSeconds = 10
+    ): void {
+        $this->request(
+            method: 'PATCH',
+            path: $path,
+            query: $query,
+            body: $body,
+            timeoutInSeconds: $timeoutInSeconds
+        );
+    }
+
+    public function delete(
+        string $path,
+        array $query = [],
+        int $timeoutInSeconds = 10
+    ): void {
+        $this->request(
+            method: 'DELETE',
+            path: $path,
+            query: $query,
+            body: null,
+            timeoutInSeconds: $timeoutInSeconds
+        );
+    }
+
+    private function request(
+        string $method,
+        string $path,
+        array $query,
+        ?array $body,
+        int $timeoutInSeconds
+    ): void {
+        $url = rtrim(
+                string: $this->apiUrl,
+                characters: '/'
+            ) . '/' . ltrim(
+                string: $path,
+                characters: '/'
+            );
+
+        if ($query !== []) {
+            $url .= '?' . http_build_query(data: $query);
+        }
+
         $ch = curl_init();
         curl_setopt(
             handle: $ch,
             option: CURLOPT_URL,
-            value: $this->apiUrl . $action
+            value: $url
         );
-        if ($postFields === []) {
-            curl_setopt(
-                handle: $ch,
-                option: CURLOPT_HTTPGET,
-                value: 1
-            );
-        } else {
-            curl_setopt(
-                handle: $ch,
-                option: CURLOPT_POST,
-                value: 1
-            );
+        curl_setopt(
+            handle: $ch,
+            option: CURLOPT_CUSTOMREQUEST,
+            value: $method
+        );
+
+        if ($body !== null) {
             curl_setopt(
                 handle: $ch,
                 option: CURLOPT_POSTFIELDS,
-                value: http_build_query(data: $postFields)
+                value: json_encode(
+                    value: $body,
+                    flags: JSON_THROW_ON_ERROR
+                )
             );
         }
+
         curl_setopt(
             handle: $ch,
             option: CURLOPT_RETURNTRANSFER,
@@ -72,73 +143,89 @@ class ApiClient
             option: CURLOPT_TIMEOUT,
             value: $timeoutInSeconds
         );
-        if(defined(constant_name: 'CURLOPT_XOAUTH2_BEARER')) {
-            curl_setopt(
-                handle: $ch,
-                option: CURLOPT_HTTPAUTH,
-                value: CURLAUTH_BEARER
-            );
-            curl_setopt(
-                handle: $ch,
-                option: CURLOPT_XOAUTH2_BEARER,
-                value: $this->apiKey
-            );
-        } else {
-            curl_setopt(
-                handle: $ch,
-                option: CURLOPT_HTTPHEADER,
-                value: [
-                    'Authorization: Bearer ' . $this->apiKey,
-                    'Content-Type: application/x-www-form-urlencoded'
-                ]
-            );
-        }
+        curl_setopt(
+            handle: $ch,
+            option: CURLOPT_HTTPHEADER,
+            value: [
+                'Authorization: Bearer ' . $this->apiKey,
+                'Accept: application/json',
+                'Content-Type: application/json',
+            ]
+        );
+
         $response = curl_exec(handle: $ch);
         if (curl_errno(handle: $ch)) {
             throw new Exception(
                 message: 'Connection Error: ' . curl_errno(handle: $ch) . ' - ' . curl_error(handle: $ch)
             );
         }
+
+        $httpStatusCode = curl_getinfo(
+            handle: $ch,
+            option: CURLINFO_HTTP_CODE
+        );
         curl_close(handle: $ch);
-        $this->responseObject = json_decode(json: $response);
+
+        $this->responseObject = json_decode(
+            json: (string)$response,
+            flags: JSON_THROW_ON_ERROR
+        );
+
         if ($this->log) {
             Log::execute(
                 className: static::class,
                 params: [
-                    'action' => $action,
-                    'postFields' => $postFields,
-                    'response' => $response
+                    'path' => $path,
+                    'method' => $method,
+                    'query' => $query,
+                    'body' => $body,
+                    'httpStatusCode' => $httpStatusCode,
+                    'response' => $response,
                 ]
             );
         }
-        if (
-            $this->responseObject === null
-            && json_last_error() !== JSON_ERROR_NONE
-        ) {
-            throw new Exception(message: 'Bad response received from API');
-        }
-        if ($this->responseObject->status !== 'success') {
-            throw new Exception(message: $this->responseObject->error->message);
+
+        if ($this->responseObject->success !== true) {
+            $message = 'API request failed';
+            if (
+                property_exists(
+                    object_or_class: $this->responseObject,
+                    property: 'error'
+                )
+                && property_exists(
+                    object_or_class: $this->responseObject->error,
+                    property: 'message'
+                )
+            ) {
+                $message = $this->responseObject->error->message;
+            }
+
+            throw new Exception(
+                message: sprintf(
+                    'API request "%s" failed with HTTP %d: %s',
+                    $path,
+                    $httpStatusCode,
+                    $message
+                )
+            );
         }
     }
 
     public function getFromResponse(string $key): string|array|bool|object
     {
-        return property_exists(
-            object_or_class: $this->responseObject->result,
-            property: $key
-        ) ? $this->responseObject->result->{$key} : '';
-    }
-
-    public static function generateEppAuthCode(): string
-    {
-        $characters = '23456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ-+/*';
-        $charactersLength = strlen(string: $characters);
-        $authCode = '';
-        for ($i = 0; $i < 16; $i++) {
-            $authCode .= $characters[random_int(min: 0, max: $charactersLength - 1)];
+        if (
+            !property_exists(
+                object_or_class: $this->responseObject,
+                property: 'data'
+            )
+            || !is_object(value: $this->responseObject->data)
+        ) {
+            return '';
         }
 
-        return $authCode;
+        return property_exists(
+            object_or_class: $this->responseObject->data,
+            property: $key
+        ) ? $this->responseObject->data->{$key} : '';
     }
 }

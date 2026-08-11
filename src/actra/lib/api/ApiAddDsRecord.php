@@ -17,9 +17,9 @@ readonly class ApiAddDsRecord
         string $asciiDomainName,
         DsRecord $dsRecord,
     ) {
-        $apiClient->call(
-            action: 'addDsRecord',
-            postFields: array(
+        $apiClient->post(
+            path: 'addDsRecord',
+            body: array(
                 'domainName' => $asciiDomainName,
                 'keyTag' => $dsRecord->keyTag,
                 'alg' => $dsRecord->algorithm,

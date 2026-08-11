@@ -18,9 +18,9 @@ readonly class ApiUpdateContact
         string $identifier,
         DomainContact $domainContact
     ) {
-        $apiClient->call(
-            action: 'updateContact',
-            postFields: [
+        $apiClient->patch(
+            path: 'updateContact',
+            body: [
                 'registry' => $registry,
                 'identifier' => $identifier,
                 'name' => $domainContact->name,

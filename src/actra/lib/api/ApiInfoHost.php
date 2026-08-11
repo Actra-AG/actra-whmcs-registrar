@@ -18,13 +18,13 @@ readonly class ApiInfoHost
     public function __construct(
         ApiClient $apiClient,
         string $registry,
-        string $nameserver
+        string $hostname
     ) {
-        $apiClient->call(
-            action: 'infoHost',
-            postFields: [
+        $apiClient->get(
+            path: 'infoHost',
+            query: [
                 'registry' => $registry,
-                'name' => $nameserver,
+                'name' => $hostname,
             ]
         );
         $this->host = new Host(

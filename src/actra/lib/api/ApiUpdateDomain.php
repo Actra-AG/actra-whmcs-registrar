@@ -24,44 +24,46 @@ readonly class ApiUpdateDomain
         ?string $newAuthCode = null,
         ?string $newRegistrant = null
     ) {
-        $postFields = [];
+        $body = [];
         if ($newNameservers !== null) {
-            $postFields['newNameservers'] = $newNameservers;
+            $body['newNameservers'] = $newNameservers;
         }
         if ($removeNameservers !== null) {
-            $postFields['removeNameservers'] = $removeNameservers;
+            $body['removeNameservers'] = $removeNameservers;
         }
         if ($newAdminContact !== null) {
-            $postFields['newAdminContact'] = $newAdminContact;
+            $body['newAdminContact'] = $newAdminContact;
         }
         if ($removeAdminContact !== null) {
-            $postFields['removeAdminContact'] = $removeAdminContact;
+            $body['removeAdminContact'] = $removeAdminContact;
         }
         if ($newTechContact !== null) {
-            $postFields['newTechContact'] = $newTechContact;
+            $body['newTechContact'] = $newTechContact;
         }
         if ($removeTechContact !== null) {
-            $postFields['removeTechContact'] = $removeTechContact;
+            $body['removeTechContact'] = $removeTechContact;
         }
         if ($newBillingContact !== null) {
-            $postFields['newBillingContact'] = $newBillingContact;
+            $body['newBillingContact'] = $newBillingContact;
         }
         if ($removeBillingContact !== null) {
-            $postFields['removeBillingContact'] = $removeBillingContact;
+            $body['removeBillingContact'] = $removeBillingContact;
         }
         if ($newAuthCode !== null) {
-            $postFields['newAuthCode'] = $newAuthCode;
+            $body['newAuthCode'] = $newAuthCode;
         }
         if ($newRegistrant !== null) {
-            $postFields['newRegistrant'] = $newRegistrant;
+            $body['newRegistrant'] = $newRegistrant;
         }
-        if ($postFields === []) {
+        if ($body === []) {
             return;
         }
-        $postFields['domainName'] = $asciiDomainName;
-        $apiClient->call(
-            action: 'updateDomain',
-            postFields: $postFields
+        $apiClient->patch(
+            path: 'updateDomain',
+            query: [
+                'domainName' => $asciiDomainName,
+            ],
+            body: $body
         );
     }
 }
