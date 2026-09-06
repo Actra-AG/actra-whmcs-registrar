@@ -9,6 +9,11 @@ within the WHMCS platform.
 
 The module communicates with the Actra Domains REST API using bearer-token authentication and JSON requests.
 
+Domain properties such as the registration status, the transfer lock, and the restorable state are read from the
+normalized fields of the API response. The registry-specific status codes are therefore interpreted by the Actra Domains
+API rather than by this module, which requires an API that provides the `normalizedStatus` field and the derived
+boolean fields of the domain response.
+
 ## Features
 
 - Register Domain

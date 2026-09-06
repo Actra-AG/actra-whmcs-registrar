@@ -25,9 +25,15 @@ readonly class ApiInfoDomain
     public ?DomainContact $tech;
     public ?DomainContact $billing;
     public ?DomainContact $admin;
-    public string $domainStatus;
+    public string $normalizedStatus;
     public ?Carbon $expiryDate;
     public bool $hasTransferLock;
+    public bool $hasDeleteLock;
+    public bool $hasUpdateLock;
+    public bool $hasRenewLock;
+    public bool $isDelegated;
+    public bool $hasPendingTransfer;
+    public ?bool $isRestorable;
     public DsRecordCollection $dsRecordCollection;
 
     public function __construct(
@@ -87,18 +93,24 @@ readonly class ApiInfoDomain
         $this->tech = $tech;
         $this->billing = $billing;
         $this->admin = $admin;
-        $this->domainStatus = current(array: $apiClient->getFromResponse(key: 'status'));
+        $normalizedStatus = trim(string: (string)$apiClient->getFromResponse(key: 'normalizedStatus'));
+        $this->normalizedStatus = $normalizedStatus === '' ? 'unknown' : $normalizedStatus;
         $expiryDate = $apiClient->getFromResponse(key: 'expiryDate');
         $this->expiryDate = $expiryDate === null || $expiryDate === ''
             ? null
             : Carbon::parse(time: $expiryDate);
-        $this->hasTransferLock = in_array(
-            needle: $this->domainStatus,
-            haystack: [
-                'clientTransferProhibited',
-                'serverTransferProhibited'
-            ]
-        );
+        // The API derives these from the raw registry status codes so that the registry-specific vocabulary of every
+        // supported TLD does not have to be interpreted here.
+        $this->hasTransferLock = $apiClient->getFromResponse(key: 'transferLock') === true;
+        $this->hasDeleteLock = $apiClient->getFromResponse(key: 'deleteLock') === true;
+        $this->hasUpdateLock = $apiClient->getFromResponse(key: 'updateLock') === true;
+        $this->hasRenewLock = $apiClient->getFromResponse(key: 'renewLock') === true;
+        $this->isDelegated = $apiClient->getFromResponse(key: 'delegated') === true;
+        $this->hasPendingTransfer = $apiClient->getFromResponse(key: 'pendingTransfer') === true;
+        $restorable = $apiClient->getFromResponse(key: 'restorable');
+        // Null means the registry reported 'pendingDelete' without RGP data, so redemption and final deletion cannot
+        // be told apart.
+        $this->isRestorable = is_bool(value: $restorable) ? $restorable : null;
         $this->dsRecordCollection = new DsRecordCollection();
         foreach ((array)$apiClient->getFromResponse(key: 'dsRecords') as $dsRecord) {
             $this->dsRecordCollection->add(
