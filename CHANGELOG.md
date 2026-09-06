@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.4.0
+## v0.4.0 - 2026-09-06
 
 ### Fixed
 
@@ -23,20 +23,20 @@
 - Domain synchronization keeps the expiry date known to WHMCS when the registry does not report one.
 - Domain synchronization returns an error response instead of throwing when the API request fails.
 
-## v0.3.2
+## v0.3.2 - 2026-08-11
 
 ### Fixed
 
 - Enabled IRTP handling for `.com` domains by matching WHMCS TLD values without a leading dot.
 
-## v0.3.1
+## v0.3.1 - 2026-08-11
 
 ### Fixed
 
 - Fixed a runtime type error when the API returns nullable domain information fields.
 - Fixed handling of domains without an expiry date in the domain information response.
 
-## v0.3.0
+## v0.3.0 - 2026-08-11
 
 ### Added
 
@@ -51,7 +51,7 @@
 - Removed the obsolete API username configuration field from the registrar settings.
 - Updated API key validation to use bearer-token based validation without a username request parameter.
 
-## v0.2.0
+## v0.2.0 - 2026-08-10
 
 ### Changed
 
@@ -60,3 +60,9 @@
 - Removed registry-specific contact handling from incoming transfers.
 - Added support for owner, admin, tech, and billing transfer contact data.
 - Added optional nameserver submission during transfers.
+
+## v0.1.2 - 2026-05-18
+
+## v0.1.1 - 2026-04-14
+
+## v0.1.0 - 2026-04-04
