@@ -1,0 +1,28 @@
+# Ignore everything
+*
+
+# Allow specific files
+!/.editorconfig
+!/.gitattributes
+!/.gitignore
+!/.php-cs-fixer.dist.php
+!/AGENTS.md
+!/CHANGELOG.md
+!/CLAUDE.md
+!/composer.json
+!/LICENSE
+!/phpstan-baseline.neon
+!/phpstan.neon
+!/phpunit.xml
+!/README.md
+
+# Allow specific directories
+!/.ddev/
+!/.ddev/config.yaml
+!/src/
+!/src/**
+!/tests/
+!/tests/**
+
+# Never commit macOS metadata
+.DS_Store

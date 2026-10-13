@@ -1,0 +1,12 @@
+includes:
+    - vendor/actra/coding-standard/config/phpstan.neon
+    # Only for legacy code, may only shrink
+    - phpstan-baseline.neon
+
+parameters:
+    # Minimum PHP version of the module (see AGENTS.md)
+    phpVersion: 80300
+    paths:
+        - src
+        - tests
+        - .php-cs-fixer.dist.php

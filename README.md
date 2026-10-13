@@ -86,6 +86,18 @@ After installation, you may need to move or symlink the module files to your WHM
 3. Activate the **actra** module.
 4. Enter your API credentials and configure the available options.
 
+## Development
+
+The project follows the [Actra coding standard](https://github.com/Actra-AG/coding-standard) (see
+[AGENTS.md](AGENTS.md)). Run the code style check, the static analysis and the tests with DDEV
+(PHP 8.3, the PHP version supported by WHMCS):
+
+```bash
+ddev start
+ddev composer install
+ddev composer check
+```
+
 ## Authors
 
 - [Christof Moser](https://www.actra.ch/)

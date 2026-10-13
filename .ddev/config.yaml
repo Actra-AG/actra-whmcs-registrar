@@ -1,0 +1,11 @@
+name: actra-whmcs-registrar
+type: php
+docroot: ""
+# WHMCS only supports PHP 8.3 (see AGENTS.md, "Deviations from the global standard")
+php_version: "8.3"
+webserver_type: nginx-fpm
+omit_containers: [db]
+xdebug_enabled: false
+web_environment:
+    # actra/coding-standard requires PHP 8.5 but its configuration runs on PHP 8.3
+    - COMPOSER_IGNORE_PLATFORM_REQ=php

@@ -1,0 +1,2107 @@
+parameters:
+	ignoreErrors:
+		-
+			rawMessage: 'Function actra_AdminCustomButtonArray() has an unused parameter $params.'
+			identifier: function.unusedParameter
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_AdminCustomButtonArray() has parameter $params with no type specified.'
+			identifier: missingType.parameter
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_ClientAreaCustomButtonArray() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_DeleteNameserver() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_DeleteNameserver() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_GetDNSSEC() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_GetDNSSEC() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_GetDomainInformation() has invalid return type WHMCS\Domain\Registrar\Domain.'
+			identifier: class.notFound
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_GetDomainInformation() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_GetEPPCode() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_GetEPPCode() should return array<true> but returns array.'
+			identifier: return.type
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_GetNameservers() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_GetNameservers() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_MetaData() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_ModifyNameserver() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_ModifyNameserver() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_RegisterDomain() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_RegisterDomain() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_RegisterNameserver() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_RegisterNameserver() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_RequestDelete() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_RequestDelete() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_RestoreDomain() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_RestoreDomain() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_SaveContactDetails() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_SaveContactDetails() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_SaveNameservers() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_SaveNameservers() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_Sync() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_Sync() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_TransferDomain() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_TransferDomain() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_config_validate() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_getConfigArray() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_getConfigArray() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_getContactDetails() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Function actra_getContactDetails() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/actra.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\AbstractAction::__construct() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/AbstractAction.php
+
+		-
+			rawMessage: Offset 'APIKey' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/AbstractAction.php
+
+		-
+			rawMessage: Offset 'APIUrl' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/AbstractAction.php
+
+		-
+			rawMessage: Offset 'Log' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 2
+			path: src/actra/lib/action/AbstractAction.php
+
+		-
+			rawMessage: 'Parameter $apiKey of class WHMCS\Module\Registrar\Actra\api\ApiClient constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/AbstractAction.php
+
+		-
+			rawMessage: 'Parameter $apiUrl of class WHMCS\Module\Registrar\Actra\api\ApiClient constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/AbstractAction.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\AddDNSSEC::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/AddDNSSEC.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/AddDNSSEC.php
+
+		-
+			rawMessage: 'Parameter $algorithm of class WHMCS\Module\Registrar\Actra\data\DsRecord constructor expects int, int|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/AddDNSSEC.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiAddDsRecord constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/AddDNSSEC.php
+
+		-
+			rawMessage: 'Parameter $digest of class WHMCS\Module\Registrar\Actra\data\DsRecord constructor expects string, string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/AddDNSSEC.php
+
+		-
+			rawMessage: 'Parameter $digestType of class WHMCS\Module\Registrar\Actra\data\DsRecord constructor expects int, int|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/AddDNSSEC.php
+
+		-
+			rawMessage: 'Parameter $keyTag of class WHMCS\Module\Registrar\Actra\data\DsRecord constructor expects int, int|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/AddDNSSEC.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\AddDNSSEC::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/AddDNSSEC.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\ConfigValidate::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/ConfigValidate.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\CreateRegistrant::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: Offset 'address1' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: Offset 'address2' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: Offset 'city' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: Offset 'companyname' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: Offset 'countrycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: Offset 'email' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: Offset 'fullname' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: Offset 'fullphonenumber' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: Offset 'postcode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: 'Parameter $addressRow2 of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: 'Parameter $city of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: 'Parameter $countryCode of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: 'Parameter $email of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: 'Parameter $name of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: 'Parameter $org of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: 'Parameter $phone of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: 'Parameter $postCode of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: 'Parameter $street of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/CreateRegistrant.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\DeleteDNSSEC::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/DeleteDNSSEC.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/DeleteDNSSEC.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiDeleteDsRecord constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/DeleteDNSSEC.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiInfoDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/DeleteDNSSEC.php
+
+		-
+			rawMessage: 'Parameter $dsRecord of class WHMCS\Module\Registrar\Actra\api\ApiDeleteDsRecord constructor expects WHMCS\Module\Registrar\Actra\data\DsRecord, WHMCS\Module\Registrar\Actra\data\DsRecord|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/DeleteDNSSEC.php
+
+		-
+			rawMessage: 'Parameter $keyTag of method WHMCS\Module\Registrar\Actra\data\DsRecordCollection::getByKeyTag() expects int, int|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/DeleteDNSSEC.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\DeleteDNSSEC::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/DeleteDNSSEC.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\DeleteNameserver::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/DeleteNameserver.php
+
+		-
+			rawMessage: Offset 'nameserver' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/DeleteNameserver.php
+
+		-
+			rawMessage: 'Parameter $nameserver of class WHMCS\Module\Registrar\Actra\api\ApiDeleteHost constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/DeleteNameserver.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\DeleteNameserver::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/DeleteNameserver.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\GetConfigArray::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/GetConfigArray.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\GetConfigArray::$config type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/GetConfigArray.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\GetContactDetails::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/GetContactDetails.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/GetContactDetails.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiInfoDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/GetContactDetails.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\GetContactDetails::$contacts type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/GetContactDetails.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\GetDnsSecRecords::__construct() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/GetDnsSecRecords.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\GetDnsSecRecords::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/GetDnsSecRecords.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/GetDnsSecRecords.php
+
+		-
+			rawMessage: Offset 'domainid' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/GetDnsSecRecords.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiInfoDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/GetDnsSecRecords.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\GetDnsSecRecords::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/GetDnsSecRecords.php
+
+		-
+			rawMessage: 'Call to method setDomain() on an unknown class WHMCS\Domain\Registrar\Domain.'
+			identifier: class.notFound
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setDnsManagementStatus() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setDomainContactChangeExpiryDate() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setDomainContactChangePending() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setEmailForwardingStatus() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setExpiryDate() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setIdProtectionStatus() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setIrtpOptOutStatus() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setIrtpTransferLock() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setIrtpVerificationTriggerFields() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setIsIrtpEnabled() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setNameservers() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setPendingSuspension() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setRegistrantEmailAddress() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setRegistrationStatus() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setRestorable() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setTransferLock() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Cannot call method setTransferLockExpiryDate() on mixed.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: Instantiated class WHMCS\Domain\Registrar\Domain not found.
+			identifier: class.notFound
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Loose comparison via "==" between mixed and string is not allowed.'
+			identifier: equal.notAllowed
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\GetDomainInformation::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: Offset 'tld' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiInfoDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\action\GetDomainInformation::$domain (WHMCS\Domain\Registrar\Domain) does not accept mixed.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\GetDomainInformation::$domain has unknown class WHMCS\Domain\Registrar\Domain as its type.
+			identifier: class.notFound
+			count: 1
+			path: src/actra/lib/action/GetDomainInformation.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\GetEppCode::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/GetEppCode.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/GetEppCode.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiResetAuthCode constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/GetEppCode.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\GetEppCode::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/GetEppCode.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\GetNameservers::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/GetNameservers.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/GetNameservers.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiInfoDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/GetNameservers.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\GetNameservers::$nameservers type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/GetNameservers.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\GetRegistrarLock::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/GetRegistrarLock.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/GetRegistrarLock.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiInfoDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/GetRegistrarLock.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\GetRegistrarLock::$result type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/GetRegistrarLock.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\Log::execute() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/Log.php
+
+		-
+			rawMessage: 'Parameter $stream of function fclose expects resource, resource|false given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/Log.php
+
+		-
+			rawMessage: 'Parameter $stream of function fwrite expects resource, resource|false given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/Log.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\MetaData::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/MetaData.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\MetaData::$metaData type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/MetaData.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\ModifyNameserver::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/ModifyNameserver.php
+
+		-
+			rawMessage: Offset 'currentipaddress' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/ModifyNameserver.php
+
+		-
+			rawMessage: Offset 'nameserver' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/ModifyNameserver.php
+
+		-
+			rawMessage: Offset 'newipaddress' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/ModifyNameserver.php
+
+		-
+			rawMessage: 'Parameter $haystack of function str_contains expects string, mixed given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/action/ModifyNameserver.php
+
+		-
+			rawMessage: 'Parameter $nameserver of class WHMCS\Module\Registrar\Actra\api\ApiUpdateHost constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/ModifyNameserver.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\ModifyNameserver::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/ModifyNameserver.php
+
+		-
+			rawMessage: 'Binary operation "." between mixed and '': Domain is not…'' results in an error.'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/actra/lib/action/RegisterDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\RegisterDomain::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/RegisterDomain.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/RegisterDomain.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiCheckDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/RegisterDomain.php
+
+		-
+			rawMessage: 'Parameter $domainName of class WHMCS\Module\Registrar\Actra\api\ApiCreateDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/RegisterDomain.php
+
+		-
+			rawMessage: 'Parameter $string of function trim expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/RegisterDomain.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\RegisterDomain::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/RegisterDomain.php
+
+		-
+			rawMessage: 'Binary operation "." between mixed and '': Nameserver is not…'' results in an error.'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/actra/lib/action/RegisterNameserver.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\RegisterNameserver::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/RegisterNameserver.php
+
+		-
+			rawMessage: Offset 'ipaddress' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/RegisterNameserver.php
+
+		-
+			rawMessage: Offset 'nameserver_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/RegisterNameserver.php
+
+		-
+			rawMessage: 'Parameter $haystack of function str_contains expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/RegisterNameserver.php
+
+		-
+			rawMessage: 'Parameter $nameserver of class WHMCS\Module\Registrar\Actra\api\ApiCheckHost constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/RegisterNameserver.php
+
+		-
+			rawMessage: 'Parameter $nameserver of class WHMCS\Module\Registrar\Actra\api\ApiCreateHost constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/RegisterNameserver.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\RegisterNameserver::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/RegisterNameserver.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\RequestDelete::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/RequestDelete.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/RequestDelete.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiDeleteDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/RequestDelete.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\RequestDelete::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/RequestDelete.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\RestoreDomain::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/RestoreDomain.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/RestoreDomain.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiRestoreDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/RestoreDomain.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\RestoreDomain::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/RestoreDomain.php
+
+		-
+			rawMessage: Cannot access offset 'City' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot access offset 'Country' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot access offset 'Email' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot access offset 'Name' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot access offset 'Organization' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot access offset 'Phone' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot access offset 'Postcode' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot access offset 'Registrant' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 9
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot access offset 'Street 1' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot access offset 'Street 2' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot access offset 'Technical' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 9
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Cannot call method equals() on WHMCS\Module\Registrar\Actra\data\DomainContact|null.'
+			identifier: method.nonObject
+			count: 1
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Cannot cast mixed to string.
+			identifier: cast.string
+			count: 1
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\SaveContactDetails::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Offset 'contactdetails' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Parameter $addressRow2 of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Parameter $city of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Parameter $countryCode of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Parameter $email of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Parameter $name of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Parameter $org of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Parameter $phone of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Parameter $postCode of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Parameter $street of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\SaveContactDetails::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/SaveContactDetails.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\SaveNameservers::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/SaveNameservers.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/SaveNameservers.php
+
+		-
+			rawMessage: 'Parameter #1 $array (list<non-empty-string>) of array_values is already a list, call has no effect.'
+			identifier: arrayValues.list
+			count: 2
+			path: src/actra/lib/action/SaveNameservers.php
+
+		-
+			rawMessage: 'Parameter #1 $array of function array_diff expects an array of values castable to string, list given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/SaveNameservers.php
+
+		-
+			rawMessage: 'Parameter #2 $arrays of function array_diff expects an array of values castable to string, list given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/SaveNameservers.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiInfoDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/SaveNameservers.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiUpdateDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/SaveNameservers.php
+
+		-
+			rawMessage: 'Parameter $string of function trim expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/SaveNameservers.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\SaveNameservers::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/SaveNameservers.php
+
+		-
+			rawMessage: 'Call to method format() on an unknown class WHMCS\Carbon.'
+			identifier: class.notFound
+			count: 1
+			path: src/actra/lib/action/Sync.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\Sync::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/Sync.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\Sync::getStatusResponse() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/Sync.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/Sync.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiInfoDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/Sync.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\Sync::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/Sync.php
+
+		-
+			rawMessage: Cannot cast mixed to string.
+			identifier: cast.string
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\TransferDomain::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
+			identifier: method.missingOverride
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\TransferDomain::getNameservers() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\TransferDomain::getNameservers() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\TransferDomain::getRegistrantContactData() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\TransferDomain::getRegistrantContactData() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\TransferDomain::getRoleContactData() has parameter $fallbackContactData with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\TransferDomain::getRoleContactData() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\TransferDomain::getRoleContactData() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\TransferDomain::hasRoleContactData() has parameter $params with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'address1' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'address2' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'city' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'companyname' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'countrycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'domain_punycode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'email' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'eppcode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'firstname' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'fullphonenumber' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'lastname' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset 'postcode' might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Offset non-falsy-string might not exist on array.
+			identifier: offsetAccess.notFound
+			count: 8
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiTransferDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Parameter $authCode of class WHMCS\Module\Registrar\Actra\api\ApiTransferDomain constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Parameter $string of function trim expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\action\TransferDomain::$response type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/action/TransferDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiCheckContact::$isAvailable (bool) does not accept array|bool|object|string|null.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiCheckContact.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiCheckDomain::$isAvailable (bool) does not accept array|bool|object|string|null.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiCheckDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiCheckHost::$isAvailable (bool) does not accept array|bool|object|string|null.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiCheckHost.php
+
+		-
+			rawMessage: Cannot access property $message on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: Class WHMCS\Module\Registrar\Actra\api\ApiClient has an uninitialized property $responseObject. Give it default value or assign it in the constructor.
+			identifier: property.uninitialized
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiClient::delete() has parameter $query with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiClient::get() has parameter $query with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiClient::getFromResponse() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiClient::getFromResponse() should return array|bool|object|string|null but returns mixed.'
+			identifier: return.type
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiClient::patch() has parameter $body with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiClient::patch() has parameter $query with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiClient::post() has parameter $body with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiClient::post() has parameter $query with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiClient::request() has parameter $body with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiClient::request() has parameter $query with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Only booleans are allowed in an if condition, int given.'
+			identifier: if.condNotBoolean
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Parameter #4 ...$values of function sprintf expects bool|float|int|string|null, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Parameter $handle of function curl_close expects CurlHandle, (CurlHandle|false) given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Parameter $handle of function curl_errno expects CurlHandle, (CurlHandle|false) given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Parameter $handle of function curl_error expects CurlHandle, (CurlHandle|false) given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Parameter $handle of function curl_exec expects CurlHandle, (CurlHandle|false) given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Parameter $handle of function curl_getinfo expects CurlHandle, (CurlHandle|false) given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Parameter $handle of function curl_setopt expects CurlHandle, (CurlHandle|false) given.'
+			identifier: argument.type
+			count: 8
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Parameter $object_or_class of function property_exists expects object|string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Parameter $value of function curl_setopt expects bool, int given.'
+			identifier: argument.type
+			count: 2
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Parameter $value of function curl_setopt expects non-empty-string|null, string given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiClient::$responseObject (stdClass) does not accept mixed.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: Variable property access on object.
+			identifier: property.dynamicName
+			count: 1
+			path: src/actra/lib/api/ApiClient.php
+
+		-
+			rawMessage: Cannot cast array|bool|object|string|null to string.
+			identifier: cast.string
+			count: 1
+			path: src/actra/lib/api/ApiCreateContact.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiCreateContact::$identifier (string) does not accept mixed.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiCreateContact.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiCreateDomain::__construct() has parameter $nameservers with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiCreateDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiCreateHost::__construct() has parameter $ipv4 with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiCreateHost.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiCreateHost::__construct() has parameter $ipv6 with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiCreateHost.php
+
+		-
+			rawMessage: 'Parameter $addressRow2 of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoContact.php
+
+		-
+			rawMessage: 'Parameter $city of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoContact.php
+
+		-
+			rawMessage: 'Parameter $countryCode of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoContact.php
+
+		-
+			rawMessage: 'Parameter $email of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoContact.php
+
+		-
+			rawMessage: 'Parameter $name of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoContact.php
+
+		-
+			rawMessage: 'Parameter $org of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoContact.php
+
+		-
+			rawMessage: 'Parameter $phone of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoContact.php
+
+		-
+			rawMessage: 'Parameter $postCode of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoContact.php
+
+		-
+			rawMessage: 'Parameter $street of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoContact.php
+
+		-
+			rawMessage: 'Argument of an invalid type array|bool|object|string|null supplied for foreach, only iterables are supported.'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Call to static method parse() on an unknown class WHMCS\Carbon.'
+			identifier: class.notFound
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $addressRow2 on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $algorithm on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $city on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $countryCode on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $digest on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $digestType on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $email on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $keyTag on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $name on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $org on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $phone on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $street on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot access property $zipCode on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Cannot cast array|bool|object|string|null to string.
+			identifier: cast.string
+			count: 5
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $addressRow2 of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $algorithm of class WHMCS\Module\Registrar\Actra\data\DsRecord constructor expects int, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $city of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $countryCode of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $digest of class WHMCS\Module\Registrar\Actra\data\DsRecord constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $digestType of class WHMCS\Module\Registrar\Actra\data\DsRecord constructor expects int, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $email of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $keyTag of class WHMCS\Module\Registrar\Actra\data\DsRecord constructor expects int, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $name of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $org of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $phone of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $postCode of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $street of class WHMCS\Module\Registrar\Actra\data\DomainContact constructor expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $string of function trim expects string, mixed given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiInfoDomain::$adminIdentifier (string) does not accept mixed.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiInfoDomain::$asciiName (string) does not accept array|bool|object|string|null.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiInfoDomain::$billingIdentifier (string) does not accept mixed.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiInfoDomain::$expiryDate (WHMCS\Carbon|null) does not accept mixed.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\api\ApiInfoDomain::$expiryDate has unknown class WHMCS\Carbon as its type.
+			identifier: class.notFound
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: Property WHMCS\Module\Registrar\Actra\api\ApiInfoDomain::$nameservers type has no value type specified in iterable type array.
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiInfoDomain::$registrantIdentifier (string) does not accept mixed.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiInfoDomain::$techIdentifier (string) does not accept mixed.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Using the switch control structure is forbidden, use match.'
+			identifier: disallowed.switch
+			count: 1
+			path: src/actra/lib/api/ApiInfoDomain.php
+
+		-
+			rawMessage: 'Parameter $datetime of class DateTimeImmutable constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoHost.php
+
+		-
+			rawMessage: 'Parameter $ipv4List of class WHMCS\Module\Registrar\Actra\data\Host constructor expects array, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoHost.php
+
+		-
+			rawMessage: 'Parameter $ipv6List of class WHMCS\Module\Registrar\Actra\data\Host constructor expects array, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoHost.php
+
+		-
+			rawMessage: 'Parameter $name of class WHMCS\Module\Registrar\Actra\data\Host constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoHost.php
+
+		-
+			rawMessage: 'Parameter $roid of class WHMCS\Module\Registrar\Actra\data\Host constructor expects string, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoHost.php
+
+		-
+			rawMessage: 'Parameter $status of class WHMCS\Module\Registrar\Actra\data\Host constructor expects array, array|bool|object|string|null given.'
+			identifier: argument.type
+			count: 1
+			path: src/actra/lib/api/ApiInfoHost.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiResetAuthCode::$authCode (string) does not accept array|bool|object|string|null.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiResetAuthCode.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiTransferDomain::__construct() has parameter $newAdminContactData with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiTransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiTransferDomain::__construct() has parameter $newBillingContactData with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiTransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiTransferDomain::__construct() has parameter $newNameservers with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiTransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiTransferDomain::__construct() has parameter $newOwnerContactData with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiTransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiTransferDomain::__construct() has parameter $newTechContactData with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiTransferDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiTransferDomain::$isActionPending (bool) does not accept array|bool|object|string|null.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiTransferDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiTransferDomain::$registrant (string) does not accept array|bool|object|string|null.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiTransferDomain.php
+
+		-
+			rawMessage: 'Property WHMCS\Module\Registrar\Actra\api\ApiTransferDomain::$techContact (string) does not accept array|bool|object|string|null.'
+			identifier: assign.propertyType
+			count: 1
+			path: src/actra/lib/api/ApiTransferDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiUpdateDomain::__construct() has parameter $newNameservers with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiUpdateDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiUpdateDomain::__construct() has parameter $removeNameservers with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiUpdateDomain.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiUpdateHost::__construct() has parameter $newIpv4 with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiUpdateHost.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiUpdateHost::__construct() has parameter $newIpv6 with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiUpdateHost.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiUpdateHost::__construct() has parameter $removeIpv4 with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiUpdateHost.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\api\ApiUpdateHost::__construct() has parameter $removeIpv6 with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/api/ApiUpdateHost.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\data\DomainContact::getWhmcsDataArray() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/data/DomainContact.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\data\DsRecord::getDataArray() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/data/DsRecord.php
+
+		-
+			rawMessage: 'Argument of an invalid type mixed supplied for foreach, only iterables are supported.'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/actra/lib/data/DsRecordCollection.php
+
+		-
+			rawMessage: Cannot access property $algorithm on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/data/DsRecordCollection.php
+
+		-
+			rawMessage: Cannot access property $digest on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/data/DsRecordCollection.php
+
+		-
+			rawMessage: Cannot access property $digestType on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/data/DsRecordCollection.php
+
+		-
+			rawMessage: Cannot access property $keyTag on mixed.
+			identifier: property.nonObject
+			count: 1
+			path: src/actra/lib/data/DsRecordCollection.php
+
+		-
+			rawMessage: Cannot cast mixed to int.
+			identifier: cast.int
+			count: 3
+			path: src/actra/lib/data/DsRecordCollection.php
+
+		-
+			rawMessage: Cannot cast mixed to string.
+			identifier: cast.string
+			count: 1
+			path: src/actra/lib/data/DsRecordCollection.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\data\DsRecordCollection::getAsJson() should return string but returns string|false.'
+			identifier: return.type
+			count: 1
+			path: src/actra/lib/data/DsRecordCollection.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\data\DsRecordCollection::getDataArray() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/data/DsRecordCollection.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\data\Host::__construct() has parameter $ipv4List with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/data/Host.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\data\Host::__construct() has parameter $ipv6List with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/data/Host.php
+
+		-
+			rawMessage: 'Method WHMCS\Module\Registrar\Actra\data\Host::__construct() has parameter $status with no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/actra/lib/data/Host.php
