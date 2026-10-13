@@ -1,0 +1,37 @@
+<?php
+
+// PHPStan stubs of the WHMCS classes used by the module, as documented at https://classdocs.whmcs.com.
+// WHMCS itself is not available in this repository.
+
+namespace WHMCS\Authentication;
+
+class CurrentUser
+{
+    public function admin(): ?\WHMCS\User\Admin {}
+
+    public function client(): ?\WHMCS\User\Client {}
+}
+
+namespace WHMCS\Config;
+
+class Setting
+{
+    /**
+     * @return string|null
+     */
+    public static function getValue(string $setting) {}
+}
+
+namespace WHMCS\User;
+
+class Admin
+{
+    /** An admin's preferred display language */
+    public ?string $language;
+}
+
+class Client
+{
+    /** The client's preferred display language */
+    public ?string $language;
+}

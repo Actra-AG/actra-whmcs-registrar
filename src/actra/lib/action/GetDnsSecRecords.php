@@ -9,34 +9,33 @@ declare(strict_types=1);
 
 namespace WHMCS\Module\Registrar\Actra\action;
 
+use Override;
 use Throwable;
 use WHMCS\Module\Registrar\Actra\api\ApiInfoDomain;
+use WHMCS\Module\Registrar\Actra\i18n\Translator;
 
 class GetDnsSecRecords extends AbstractAction
 {
     public readonly array $response;
 
-    public function __construct(
-        array $params,
-        private readonly bool $successful
-    ) {
-        parent::__construct(params: $params);
-    }
-
+    #[Override]
     protected function execute(): void
     {
         try {
+            $isSaved = false;
             if (array_key_exists(
                 key: 'add',
-                array: $_POST
+                array: $_POST,
             )) {
                 new AddDNSSEC(params: $this->params);
+                $isSaved = true;
             }
             if (array_key_exists(
                 key: 'delete',
-                array: $_POST
+                array: $_POST,
             )) {
                 new DeleteDNSSEC(params: $this->params);
+                $isSaved = true;
             }
             $domainInfo = new ApiInfoDomain(
                 apiClient: $this->getApiClient(),
@@ -47,9 +46,11 @@ class GetDnsSecRecords extends AbstractAction
                 'records' => $domainInfo->dsRecordCollection->getDataArray(),
                 'templatefile' => 'dnssec',
                 'vars' => [
-                    'successful' => $this->successful,
+                    'successful' => $isSaved,
                     'records' => $domainInfo->dsRecordCollection->getDataArray(),
                     'domainid' => $this->params['domainid'],
+                    // Not $LANG, which holds the texts of WHMCS
+                    'actraLang' => Translator::current()->all(),
                 ],
             ];
             return;

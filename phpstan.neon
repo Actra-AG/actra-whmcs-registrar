@@ -10,3 +10,6 @@ parameters:
         - src
         - tests
         - .php-cs-fixer.dist.php
+    # WHMCS classes used by new code; the legacy code's WHMCS classes are in the baseline
+    scanFiles:
+        - stubs/whmcs.stub

@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.6.0 - 2026-10-13
+
+### Added
+
+- German and English texts: the registrar settings, the buttons, the DNSSEC page in the client area and the error
+  messages of the module are shown in the language of the admin or client. Other languages fall back to English.
+
+### Fixed
+
+- The DNSSEC page in the client area shows the confirmation after adding or deleting a DS record.
+
+### Changed
+
+- The DNSSEC page in the client area was only available in German; it now follows the language of the client.
+
 ## v0.5.0 - 2026-10-13
 
 ### Added

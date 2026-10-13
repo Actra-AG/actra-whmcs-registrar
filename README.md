@@ -61,6 +61,12 @@ resolves the appropriate registry from the TLD and creates or reuses matching co
 When available, separate WHMCS Admin, Tech, and Billing contact data is submitted for the transfer. If role-specific
 contact data is incomplete or unavailable, the module falls back to the registrant contact data.
 
+## Languages
+
+The texts of the module are available in German and English. WHMCS shows them in the language of the admin in the
+admin area and in the language of the client in the client area; other languages fall back to English. Error messages
+of the Actra Domains API are shown in English.
+
 ## Installation
 
 WHMCS loads the module from `modules/registrars/actra` and autoloads its classes from the `lib` directory there. The

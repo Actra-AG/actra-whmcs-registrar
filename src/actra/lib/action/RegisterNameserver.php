@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace WHMCS\Module\Registrar\Actra\action;
 
-use Exception;
+use RuntimeException;
 use Throwable;
 use WHMCS\Module\Registrar\Actra\api\ApiCheckHost;
 use WHMCS\Module\Registrar\Actra\api\ApiCreateHost;
@@ -39,7 +39,10 @@ class RegisterNameserver extends AbstractAction
                 registry: 'SWITCH',
                 nameserver: $nameserver
             ))->isAvailable) {
-                throw new Exception(message: $nameserver . ': Nameserver is not available');
+                throw new RuntimeException(message: $this->translate(
+                    key: 'error.nameserverNotAvailable',
+                    replacements: ['nameserver' => $nameserver],
+                ));
             }
             new ApiCreateHost(
                 apiClient: $apiClient,

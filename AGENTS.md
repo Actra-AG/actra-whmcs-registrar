@@ -30,7 +30,12 @@ This project follows the Actra coding standard, installed as development depende
   - `src/actra/lib/api/`: one class per Actra Domains API endpoint, `ApiClient` does the HTTP (cURL) requests.
   - `src/actra/lib/data/`, `src/actra/lib/settings/`: value objects, enums and module settings.
 - The module has no runtime dependencies besides PHP and WHMCS. WHMCS classes (`WHMCS\Domain\…`,
-  `WHMCS\Carbon`, …) are not available in this repository; their PHPStan errors are in the baseline.
+  `WHMCS\Carbon`, …) are not available in this repository. New code declares the WHMCS classes it uses in
+  `stubs/whmcs.stub` (as documented at https://classdocs.whmcs.com), the legacy code's errors are in the baseline.
+- Languages: German and English. Every text shown to admins or clients is in `src/actra/lang/english.php` and
+  `src/actra/lang/german.php` (Swiss spelling, no ß) and is read with the `Translator`; a test checks that both files
+  have the same keys and placeholders. Templates get the texts as `$actraLang` and escape them. Error messages of the
+  Actra Domains API are shown as received.
 - The API classes follow the OpenAPI specification of the Actra Domains REST API (`GET <API URL>/openapi` with an API
   key). Read the current version before changing API calls; the repository keeps no copy. Mismatches between the API
   and its specification are fixed in the API, not worked around here.

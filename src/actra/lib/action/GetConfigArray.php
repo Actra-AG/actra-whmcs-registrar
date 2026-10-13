@@ -25,33 +25,33 @@ class GetConfigArray extends AbstractAction
             ],
             'Description' => [
                 'Type' => 'System',
-                'Value' => ModuleSettings::DESCRIPTION,
+                'Value' => $this->translate(key: 'module.description'),
             ],
             ModuleSettings::CONFIG_API_URL => [
-                'FriendlyName' => 'API URL',
+                'FriendlyName' => $this->translate(key: 'setting.apiUrl.label'),
                 'Type' => 'text',
                 'Size' => '25',
                 'Default' => '',
-                'Description' => 'Base URL of the Actra Domains REST API, e.g. https://www.example.com/api/v1',
+                'Description' => $this->translate(key: 'setting.apiUrl.description'),
             ],
             ModuleSettings::CONFIG_API_KEY => [
-                'FriendlyName' => 'API Key',
+                'FriendlyName' => $this->translate(key: 'setting.apiKey.label'),
                 'Type' => 'password',
                 'Size' => '25',
                 'Default' => '',
                 'Description' => '',
             ],
             ModuleSettings::CONFIG_CUSTOMER_NUMBER => [
-                'FriendlyName' => 'Customer Number',
+                'FriendlyName' => $this->translate(key: 'setting.customerNumber.label'),
                 'Type' => 'text',
                 'Size' => '10',
                 'Default' => '',
-                'Description' => 'Customer number at Actra to be billed for registered and transferred domains.',
+                'Description' => $this->translate(key: 'setting.customerNumber.description'),
             ],
             ModuleSettings::CONFIG_LOG => [
-                'FriendlyName' => 'Log',
+                'FriendlyName' => $this->translate(key: 'setting.log.label'),
                 'Type' => 'yesno',
-                'Description' => 'Tick to enable extra logging to module log file.',
+                'Description' => $this->translate(key: 'setting.log.description'),
             ],
         ];
     }

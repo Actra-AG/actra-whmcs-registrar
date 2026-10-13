@@ -26,6 +26,7 @@ use WHMCS\Module\Registrar\Actra\action\SaveContactDetails;
 use WHMCS\Module\Registrar\Actra\action\SaveNameservers;
 use WHMCS\Module\Registrar\Actra\action\Sync;
 use WHMCS\Module\Registrar\Actra\action\TransferDomain;
+use WHMCS\Module\Registrar\Actra\i18n\Translator;
 
 if (!defined(constant_name: 'WHMCS')) {
     die('This file cannot be accessed directly');
@@ -262,16 +263,13 @@ function actra_RequestDelete(array $params): array
 function actra_ClientAreaCustomButtonArray(): array
 {
     return [
-        'DNSSEC-Records' => 'GetDNSSEC',
+        Translator::current()->get(key: 'button.dnssec') => 'GetDNSSEC',
     ];
 }
 
 function actra_GetDNSSEC(array $params): array
 {
-    return (new GetDnsSecRecords(
-        params: $params,
-        successful: false
-    ))->response;
+    return (new GetDnsSecRecords(params: $params))->response;
 }
 
 /**
@@ -289,7 +287,7 @@ function actra_GetDNSSEC(array $params): array
 function actra_AdminCustomButtonArray($params): array
 {
     return [
-        'Restore Domain' => 'RestoreDomain',
+        Translator::current()->get(key: 'button.restoreDomain') => 'RestoreDomain',
     ];
 }
 

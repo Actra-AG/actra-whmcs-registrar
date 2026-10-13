@@ -23,6 +23,8 @@
 !/.ddev/config.yaml
 !/src/
 !/src/**
+!/stubs/
+!/stubs/**
 !/tests/
 !/tests/**
 

@@ -30,7 +30,10 @@ class RegisterDomain extends AbstractAction
                 apiClient: $apiClient,
                 asciiDomainName: $domainName,
             ))->isAvailable) {
-                throw new RuntimeException(message: $domainName . ': Domain is not available');
+                throw new RuntimeException(message: $this->translate(
+                    key: 'error.domainNotAvailable',
+                    replacements: ['domain' => $domainName],
+                ));
             }
             // Glue records are created with RegisterNameserver; the API creates no hosts of other registrars
             $registrant = new CreateRegistrant(params: $this->params);
