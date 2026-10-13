@@ -31,8 +31,9 @@ This project follows the Actra coding standard, installed as development depende
   - `src/actra/lib/data/`, `src/actra/lib/settings/`: value objects, enums and module settings.
 - The module has no runtime dependencies besides PHP and WHMCS. WHMCS classes (`WHMCS\Domain\…`,
   `WHMCS\Carbon`, …) are not available in this repository; their PHPStan errors are in the baseline.
-- `openapi.json` is a local copy of the Actra Domains API specification (source: `app/settings/openapi.json` of the
-  `actra.domains` project). API classes follow it; refresh it before changing API calls.
+- The API classes follow the OpenAPI specification of the Actra Domains REST API (`GET <API URL>/openapi` with an API
+  key). Read the current version before changing API calls; the repository keeps no copy. Mismatches between the API
+  and its specification are fixed in the API, not worked around here.
 - Run the checks with `ddev composer check` (DDEV project without database, PHP 8.3). The module itself is checked in
   a WHMCS installation; there is no local WHMCS.
 - No HTML/CSS frontend review: the only template is `src/actra/dnssec.tpl`.
