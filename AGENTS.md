@@ -17,7 +17,7 @@ This project follows the Actra coding standard, installed as development depende
 - WHMCS registrar module for the Actra Domains REST API, Composer package `actra/actra-whmcs-registrar` (MIT, public).
   Used by WHMCS installations of Actra and its customers to register, transfer and manage domains.
 - PHP version: 8.3, for the module and the development tools (DDEV), because WHMCS only supports PHP 8.3.
-- Releases are Git tags; every release is listed in [CHANGELOG.md](CHANGELOG.md).
+- Releases are Git tags; the GitHub release is created from [CHANGELOG.md](CHANGELOG.md) when the tag is pushed.
 - Ongoing goal: reduce `phpstan-baseline.neon` (legacy code from before the coding standard was introduced).
 
 ## Project-specific rules
@@ -50,3 +50,7 @@ This project follows the Actra coding standard, installed as development depende
     packages, `require-dev` pins every dependency whose current major version needs PHP 8.4+: the Symfony components
     of PHP-CS-Fixer (`^7.4`) and PHPUnit (`^12.5`). After `composer update`, check that no other package needs a
     newer PHP (`ddev composer check` fails with a parse error if one does) and pin it the same way.
+- **CHANGELOG.md instead of UPGRADE.md:** the readers are WHMCS administrators, not developers using a PHP API. One
+  section per version (`## vX.Y.Z - YYYY-MM-DD`, newest first) with `Added`, `Fixed`, `Changed` and the settings
+  administrators must change. As for `UPGRADE.md`, there is no "Unreleased" section: the commit that releases a
+  version adds its section.

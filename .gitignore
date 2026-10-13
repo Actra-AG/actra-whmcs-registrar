@@ -17,6 +17,8 @@
 !/README.md
 
 # Allow specific directories
+!/.github/
+!/.github/**
 !/.ddev/
 !/.ddev/config.yaml
 !/src/
