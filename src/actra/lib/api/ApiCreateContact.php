@@ -1,7 +1,8 @@
 <?php
+
 /**
- * @author    Christof Moser <contact@actra.ch>
- * @copyright Actra AG, Embrach, Switzerland, www.actra.ch
+ * @copyright Actra AG - https://www.actra.ch
+ * @license   MIT
  */
 
 declare(strict_types=1);
@@ -34,6 +35,6 @@ readonly class ApiCreateContact
                 'email' => $domainContact->email,
             ]
         );
-        $this->identifier = (string)$apiClient->getFromResponse(key: 'identifier');
+        $this->identifier = (string) $apiClient->getFromResponse(key: 'identifier');
     }
 }

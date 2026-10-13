@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -22,7 +23,7 @@ class SaveContactDetails extends AbstractAction
     {
         $params = $this->params;
         try {
-            $asciiDomainName = (string)$params['domain_punycode'];
+            $asciiDomainName = (string) $params['domain_punycode'];
             $apiClient = $this->getApiClient();
             $apiDomainInfo = new ApiInfoDomain(
                 apiClient: $apiClient,
@@ -87,7 +88,7 @@ class SaveContactDetails extends AbstractAction
             return;
         } catch (Throwable $throwable) {
             $this->response = [
-                'error' => $throwable->getMessage()
+                'error' => $throwable->getMessage(),
             ];
         }
     }

@@ -1,7 +1,8 @@
 <?php
+
 /**
- * @author    Christof Moser <contact@actra.ch>
- * @copyright Actra AG, Embrach, Switzerland, www.actra.ch
+ * @copyright Actra AG - https://www.actra.ch
+ * @license   MIT
  */
 
 declare(strict_types=1);
@@ -36,16 +37,16 @@ class DsRecordCollection
     {
         $dsRecordCollection = new DsRecordCollection();
         $array = json_decode(json: $rawData);
-        if (is_null(value: $array)) {
+        if ($array === null) {
             return $dsRecordCollection;
         }
         foreach ($array as $item) {
             $dsRecordCollection->add(
                 dsRecord: new DsRecord(
-                    keyTag: (int)$item->keyTag,
-                    algorithm: (int)$item->algorithm,
-                    digestType: (int)$item->digestType,
-                    digest: (string)$item->digest
+                    keyTag: (int) $item->keyTag,
+                    algorithm: (int) $item->algorithm,
+                    digestType: (int) $item->digestType,
+                    digest: (string) $item->digest
                 )
             );
         }

@@ -1,7 +1,8 @@
 <?php
+
 /**
- * @author    Christof Moser <contact@actra.ch>
- * @copyright Actra AG, Embrach, Switzerland, www.actra.ch
+ * @copyright Actra AG - https://www.actra.ch
+ * @license   MIT
  */
 
 declare(strict_types=1);
@@ -19,6 +20,5 @@ readonly class Host
         public array $ipv4List,
         public array $ipv6List,
         public DateTimeImmutable $createdDate
-    ) {
-    }
+    ) {}
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -29,8 +30,7 @@ class DeleteDNSSEC extends AbstractAction
                     array: $_POST
                 )
                 && is_scalar(value: $_POST['keytag'])
-            ) ? (int)$_POST['keytag'] : null
-
+            ) ? (int) $_POST['keytag'] : null
         );
         new ApiDeleteDsRecord(
             apiClient: $this->getApiClient(),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -25,7 +26,7 @@ class GetNameservers extends AbstractAction
             ))->nameservers;
         } catch (Throwable $throwable) {
             $this->nameservers = [
-                'error' => $throwable->getMessage()
+                'error' => $throwable->getMessage(),
             ];
         }
     }

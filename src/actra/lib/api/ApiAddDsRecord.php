@@ -1,7 +1,8 @@
 <?php
+
 /**
- * @author    Christof Moser <contact@actra.ch>
- * @copyright Actra AG, Embrach, Switzerland, www.actra.ch
+ * @copyright Actra AG - https://www.actra.ch
+ * @license   MIT
  */
 
 declare(strict_types=1);
@@ -19,13 +20,13 @@ readonly class ApiAddDsRecord
     ) {
         $apiClient->post(
             path: 'addDsRecord',
-            body: array(
+            body: [
                 'domainName' => $asciiDomainName,
                 'keyTag' => $dsRecord->keyTag,
                 'alg' => $dsRecord->algorithm,
                 'digestType' => $dsRecord->digestType,
                 'digest' => $dsRecord->digest,
-            )
+            ]
         );
     }
 }

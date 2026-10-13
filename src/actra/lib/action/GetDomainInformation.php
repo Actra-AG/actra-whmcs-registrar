@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -22,7 +23,7 @@ class GetDomainInformation extends AbstractAction
             apiClient: $this->getApiClient(),
             asciiDomainName: $params['domain_punycode']
         );
-        $this->domain = (new Domain)
+        $this->domain = (new Domain())
             ->setDomain(domain: $apiInfoDomain->asciiName)
             ->setNameservers(nameservers: $apiInfoDomain->nameservers)
             ->setRegistrationStatus(

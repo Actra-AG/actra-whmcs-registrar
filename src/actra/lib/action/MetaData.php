@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -20,7 +21,7 @@ class MetaData extends AbstractAction
         $this->metaData = [
             'DisplayName' => ModuleSettings::FRIENDLY_DISPLAY_NAME,
             'APIVersion' => ModuleSettings::API_VERSION,
-            'NonLinearRegistrationPricing' => false
+            'NonLinearRegistrationPricing' => false,
         ];
     }
 }

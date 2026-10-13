@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -25,7 +26,7 @@ class Sync extends AbstractAction
             );
         } catch (Throwable $throwable) {
             $this->response = [
-                'error' => $throwable->getMessage()
+                'error' => $throwable->getMessage(),
             ];
             return;
         }

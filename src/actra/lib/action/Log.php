@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -18,7 +19,7 @@ class Log
     ): void {
         array_walk_recursive(
             array: $params,
-            callback: function (&$value, $key) {
+            callback: function (&$value, $key): void {
                 if ($key === 'APIKey') {
                     $value = '***';
                 }
@@ -48,7 +49,7 @@ class Log
                     print_r(
                         value: $params,
                         return: true
-                    )
+                    ),
                 ]
             )
         );

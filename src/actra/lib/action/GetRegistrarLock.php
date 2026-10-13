@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -24,7 +25,7 @@ class GetRegistrarLock extends AbstractAction
             ))->hasTransferLock ? 'locked' : 'unlocked';
         } catch (Throwable $throwable) {
             $this->result = [
-                'error' => $throwable->getMessage()
+                'error' => $throwable->getMessage(),
             ];
         }
     }

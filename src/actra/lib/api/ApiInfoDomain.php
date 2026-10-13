@@ -1,7 +1,8 @@
 <?php
+
 /**
- * @author    Christof Moser <contact@actra.ch>
- * @copyright Actra AG, Embrach, Switzerland, www.actra.ch
+ * @copyright Actra AG - https://www.actra.ch
+ * @license   MIT
  */
 
 declare(strict_types=1);
@@ -54,15 +55,15 @@ readonly class ApiInfoDomain
             $nameservers['ns' . $i] = $nameserver;
         }
         $this->nameservers = $nameservers;
-        $this->registrantIdentifier = (string)$apiClient->getFromResponse(key: 'registrant');
-        $this->techIdentifier = (string)$apiClient->getFromResponse(key: 'techContact');
-        $this->billingIdentifier = (string)$apiClient->getFromResponse(key: 'billingContact');
-        $this->adminIdentifier = (string)$apiClient->getFromResponse(key: 'adminContact');
+        $this->registrantIdentifier = (string) $apiClient->getFromResponse(key: 'registrant');
+        $this->techIdentifier = (string) $apiClient->getFromResponse(key: 'techContact');
+        $this->billingIdentifier = (string) $apiClient->getFromResponse(key: 'billingContact');
+        $this->adminIdentifier = (string) $apiClient->getFromResponse(key: 'adminContact');
         $registrant = null;
         $tech = null;
         $billing = null;
         $admin = null;
-        foreach ((array)$apiClient->getFromResponse(key: 'contacts') as $originalType => $contact) {
+        foreach ((array) $apiClient->getFromResponse(key: 'contacts') as $originalType => $contact) {
             $domainContact = new DomainContact(
                 name: $contact->name,
                 org: $contact->org,
@@ -93,7 +94,7 @@ readonly class ApiInfoDomain
         $this->tech = $tech;
         $this->billing = $billing;
         $this->admin = $admin;
-        $normalizedStatus = trim(string: (string)$apiClient->getFromResponse(key: 'normalizedStatus'));
+        $normalizedStatus = trim(string: (string) $apiClient->getFromResponse(key: 'normalizedStatus'));
         $this->normalizedStatus = $normalizedStatus === '' ? 'unknown' : $normalizedStatus;
         $expiryDate = $apiClient->getFromResponse(key: 'expiryDate');
         $this->expiryDate = $expiryDate === null || $expiryDate === ''
@@ -112,7 +113,7 @@ readonly class ApiInfoDomain
         // be told apart.
         $this->isRestorable = is_bool(value: $restorable) ? $restorable : null;
         $this->dsRecordCollection = new DsRecordCollection();
-        foreach ((array)$apiClient->getFromResponse(key: 'dsRecords') as $dsRecord) {
+        foreach ((array) $apiClient->getFromResponse(key: 'dsRecords') as $dsRecord) {
             $this->dsRecordCollection->add(
                 dsRecord: new DsRecord(
                     keyTag: $dsRecord->keyTag,

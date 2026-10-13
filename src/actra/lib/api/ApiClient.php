@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -20,8 +21,7 @@ class ApiClient
         private readonly string $apiUrl,
         private readonly string $apiKey,
         public readonly bool $log
-    ) {
-    }
+    ) {}
 
     public function get(
         string $path,
@@ -89,12 +89,12 @@ class ApiClient
         int $timeoutInSeconds
     ): void {
         $url = rtrim(
-                string: $this->apiUrl,
-                characters: '/'
-            ) . '/' . ltrim(
-                string: $path,
-                characters: '/'
-            );
+            string: $this->apiUrl,
+            characters: '/'
+        ) . '/' . ltrim(
+            string: $path,
+            characters: '/'
+        );
 
         if ($query !== []) {
             $url .= '?' . http_build_query(data: $query);
@@ -167,7 +167,7 @@ class ApiClient
         curl_close(handle: $ch);
 
         $this->responseObject = json_decode(
-            json: (string)$response,
+            json: (string) $response,
             flags: JSON_THROW_ON_ERROR
         );
 

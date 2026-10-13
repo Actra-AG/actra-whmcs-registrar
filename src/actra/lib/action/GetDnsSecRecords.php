@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -49,12 +50,12 @@ class GetDnsSecRecords extends AbstractAction
                     'successful' => $this->successful,
                     'records' => $domainInfo->dsRecordCollection->getDataArray(),
                     'domainid' => $this->params['domainid'],
-                ]
+                ],
             ];
             return;
         } catch (Throwable $throwable) {
             $this->response = [
-                'error' => $throwable->getMessage()
+                'error' => $throwable->getMessage(),
             ];
         }
     }

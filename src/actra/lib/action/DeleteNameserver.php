@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -27,7 +28,7 @@ class DeleteNameserver extends AbstractAction
             );
         } catch (Throwable $throwable) {
             $this->response = [
-                'error' => $throwable->getMessage()
+                'error' => $throwable->getMessage(),
             ];
             return;
         }

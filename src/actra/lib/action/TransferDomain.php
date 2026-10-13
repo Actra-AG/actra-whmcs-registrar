@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -47,7 +48,7 @@ class TransferDomain extends AbstractAction
             );
         } catch (Throwable $throwable) {
             $this->response = [
-                'error' => $throwable->getMessage()
+                'error' => $throwable->getMessage(),
             ];
             return;
         }
@@ -107,21 +108,21 @@ class TransferDomain extends AbstractAction
         string $prefix
     ): bool {
         foreach ([
-                     $prefix . 'firstname',
-                     $prefix . 'lastname',
-                     $prefix . 'address1',
-                     $prefix . 'city',
-                     $prefix . 'postcode',
-                     $prefix . 'country',
-                     $prefix . 'email',
-                     $prefix . 'fullphonenumber',
-                 ] as $key) {
+            $prefix . 'firstname',
+            $prefix . 'lastname',
+            $prefix . 'address1',
+            $prefix . 'city',
+            $prefix . 'postcode',
+            $prefix . 'country',
+            $prefix . 'email',
+            $prefix . 'fullphonenumber',
+        ] as $key) {
             if (
                 !array_key_exists(
                     key: $key,
                     array: $params
                 )
-                || trim(string: (string)$params[$key]) === ''
+                || trim(string: (string) $params[$key]) === ''
             ) {
                 return false;
             }

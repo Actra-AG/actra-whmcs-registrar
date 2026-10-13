@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright Actra AG - https://www.actra.ch
  * @license   MIT
@@ -49,9 +50,6 @@ function actra_config_validate(array $params): void
 
 /**
  * Called when the registration of a new domain is initiated within WHMCS.
- *
- * @param array $params
- * @return array
  */
 function actra_RegisterDomain(array $params): array
 {
@@ -60,9 +58,6 @@ function actra_RegisterDomain(array $params): array
 
 /**
  * Called when a domain transfer request is initiated within WHMCS.
- *
- * @param array $params
- * @return array
  */
 function actra_TransferDomain(array $params): array
 {
@@ -72,7 +67,6 @@ function actra_TransferDomain(array $params): array
 /**
  * Called when a request to renew a domain is initiated within WHMCS.
  *
- * @param $params
  * @return void
  */
 //function actra_RenewDomain($params)
@@ -83,9 +77,6 @@ function actra_TransferDomain(array $params): array
 /**
  * Called when a domain is viewed within WHMCS.
  * Recommended instead of GetNameservers and GetRegistrarLock in WHMCS 7.6 and later.
- *
- * @param array $params
- * @return Domain
  */
 function actra_GetDomainInformation(array $params): Domain
 {
@@ -95,7 +86,6 @@ function actra_GetDomainInformation(array $params): Domain
 /**
  * Called when Email Forwarding is displayed within WHMCS.
  *
- * @param array $params
  * @return true[]
  */
 //function actra_GetEmailForwarding(array $params)
@@ -106,7 +96,6 @@ function actra_GetDomainInformation(array $params): Domain
 /**
  * Called when changes to Email Forwarding are submitted.
  *
- * @param array $params
  * @return void
  */
 //function actra_SaveEmailForwarding(array $params)
@@ -117,9 +106,6 @@ function actra_GetDomainInformation(array $params): Domain
 
 /**
  * Called when a domain is viewed within WHMCS. It can return up to 5 nameservers that are set for the domain.
- *
- * @param array $params
- * @return array
  */
 function actra_GetNameservers(array $params): array
 {
@@ -128,9 +114,6 @@ function actra_GetNameservers(array $params): array
 
 /**
  * Called when a change is submitted for domain nameservers.
- *
- * @param array $params
- * @return array
  */
 function actra_SaveNameservers(array $params): array
 {
@@ -141,7 +124,6 @@ function actra_SaveNameservers(array $params): array
  * Called when domain details are viewed within WHMCS.
  * It should return the current lock status of a domain.
  *
- * @param array $params
  * @return array|string
  */
 //function actra_GetRegistrarLock(array $params): array|string
@@ -151,9 +133,6 @@ function actra_SaveNameservers(array $params): array
 
 /**
  * Called when the lock status setting is toggled within WHMCS.
- *
- * @param array $params
- * @return array
  */
 //function actra_SaveRegistrarLock(array $params): void
 //{
@@ -162,9 +141,6 @@ function actra_SaveNameservers(array $params): array
 
 /**
  * Called when the WHOIS information is displayed within WHMCS.
- *
- * @param array $params
- * @return array
  */
 function actra_getContactDetails(array $params): array
 {
@@ -173,9 +149,6 @@ function actra_getContactDetails(array $params): array
 
 /**
  * Called when revised WHOIS information is submitted.
- *
- * @param array $params
- * @return array
  */
 function actra_SaveContactDetails(array $params): array
 {
@@ -184,9 +157,6 @@ function actra_SaveContactDetails(array $params): array
 
 /**
  * Called when a request is made to resend the IRTP contact verification emails.
- *
- * @param array $params
- * @return array
  */
 //function actra_ResendIRTPVerificationEmail(array $params): array
 //{
@@ -195,9 +165,6 @@ function actra_SaveContactDetails(array $params): array
 
 /**
  * Called when the DNS Host Records are requested to be viewed within WHMCS.
- *
- * @param array $params
- * @return array
  */
 //function actra_GetDNS(array $params): array
 //{
@@ -207,7 +174,6 @@ function actra_SaveContactDetails(array $params): array
 /**
  * Called when any changes to DNS Host Records information are submitted.
  *
- * @param array $params
  * @return mixed
  */
 //function actra_SaveDNS(array $params)
@@ -217,9 +183,6 @@ function actra_SaveContactDetails(array $params): array
 
 /**
  * Called when the ID Protection setting is toggled on or off.
- *
- * @param array $params
- * @return array
  */
 //function actra_IDProtectToggle(array $params): array
 //{
@@ -229,7 +192,6 @@ function actra_SaveContactDetails(array $params): array
 /**
  * Called when the EPP Code is requested for a transfer out.
  *
- * @param array $params
  * @return true[]
  * TODO: Implement sending the auth code to registrar instead of displaying it.
  */
@@ -240,9 +202,6 @@ function actra_GetEPPCode(array $params): array
 
 /**
  * Called when a domain release is requested (eg. UK IPSTag Changes).
- *
- * @param array $params
- * @return array
  */
 //function actra_ReleaseDomain(array $params): array
 //{
@@ -251,9 +210,6 @@ function actra_GetEPPCode(array $params): array
 
 /**
  * Called when a child nameserver registration request comes from WHMCS.
- *
- * @param array $params
- * @return array
  */
 function actra_RegisterNameserver(array $params): array
 {
@@ -262,9 +218,6 @@ function actra_RegisterNameserver(array $params): array
 
 /**
  * Called when a child nameserver modification request comes from WHMCS.
- *
- * @param array $params
- * @return array
  */
 function actra_ModifyNameserver(array $params): array
 {
@@ -273,9 +226,6 @@ function actra_ModifyNameserver(array $params): array
 
 /**
  * Called when a child nameserver deletion request comes from WHMCS.
- *
- * @param array $params
- * @return array
  */
 function actra_DeleteNameserver(array $params): array
 {
@@ -284,9 +234,6 @@ function actra_DeleteNameserver(array $params): array
 
 /**
  * Called when a domain deletion request comes from WHMCS.
- *
- * @param array $params
- * @return array
  */
 function actra_RequestDelete(array $params): array
 {
@@ -299,7 +246,6 @@ function actra_RequestDelete(array $params): array
  * Output via a template file within the module folder named “clientarea.tpl” is also possible.
  * This function is discussed in more detail later on in the docs.
  *
- * @param array $params
  * @return string
  */
 //function actra_ClientArea(array $params): string
@@ -312,8 +258,6 @@ function actra_RequestDelete(array $params): array
  * Customers can invoke and run these from the client area.
  * The functions can perform actions or product page output in the client area.
  * Example usages for this are to provide domain management pages, bandwidth reporting pages, etc…
- *
- * @return array
  */
 function actra_ClientAreaCustomButtonArray(): array
 {
@@ -344,9 +288,9 @@ function actra_GetDNSSEC(array $params): array
 
 function actra_AdminCustomButtonArray($params): array
 {
-    return array(
-        'Restore Domain' => 'RestoreDomain'
-    );
+    return [
+        'Restore Domain' => 'RestoreDomain',
+    ];
 }
 
 function actra_RestoreDomain(array $params): array
@@ -357,9 +301,6 @@ function actra_RestoreDomain(array $params): array
 /**
  * Called when a domain name’s expiry date and status change at registry level is requested for propagation into WHMCS.
  * (i.e., by the Domain Synchronization feature).
- *
- * @param array $params
- * @return array
  */
 function actra_Sync(array $params): array
 {
