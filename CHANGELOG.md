@@ -16,7 +16,6 @@
   host objects for them, which the API only allows below the registrar's own domains.
 - Fixed a fatal error when an API response does not contain an optional field, e.g. a contact of a domain.
 - Fixed a fatal error when saving contact details of a domain without registrant data.
-- Fixed host information reading the IP addresses from fields that do not exist in the API response.
 - API responses that are not JSON (e.g. the error page of a proxy) are reported with the API path and HTTP status
   and are written to the module log.
 

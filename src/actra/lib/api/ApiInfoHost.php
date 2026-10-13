@@ -33,8 +33,8 @@ readonly class ApiInfoHost
             name: $response->getString(key: 'name'),
             roid: $response->getString(key: 'roid'),
             status: $response->getStringList(key: 'status'),
-            ipv4List: $response->getStringList(key: 'ipv4'),
-            ipv6List: $response->getStringList(key: 'ipv6'),
+            ipv4List: $response->getStringList(key: 'ipv4List'),
+            ipv6List: $response->getStringList(key: 'ipv6List'),
             createdDate: $createdDate === '' ? null : new DateTimeImmutable(datetime: $createdDate),
         );
     }
