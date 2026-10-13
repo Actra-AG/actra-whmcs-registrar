@@ -20,7 +20,7 @@ readonly class ApiCreateContact
         string $registry,
         DomainContact $domainContact
     ) {
-        $apiClient->post(
+        $response = $apiClient->post(
             path: 'createContact',
             body: [
                 'registry' => $registry,
@@ -35,6 +35,6 @@ readonly class ApiCreateContact
                 'email' => $domainContact->email,
             ]
         );
-        $this->identifier = (string) $apiClient->getFromResponse(key: 'identifier');
+        $this->identifier = $response->getString(key: 'identifier');
     }
 }

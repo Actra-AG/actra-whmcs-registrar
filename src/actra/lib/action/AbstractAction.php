@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace WHMCS\Module\Registrar\Actra\action;
 
+use RuntimeException;
 use WHMCS\Module\Registrar\Actra\api\ApiClient;
 use WHMCS\Module\Registrar\Actra\settings\ModuleSettings;
 
@@ -40,5 +41,27 @@ abstract class AbstractAction
             );
         }
         return AbstractAction::$apiClient;
+    }
+
+    /**
+     * @throws RuntimeException if the customer number setting is not a positive integer
+     */
+    protected function getCustomerNumber(): int
+    {
+        $customerNumber = ModuleSettings::parseCustomerNumber(
+            value: $this->getStringParam(key: ModuleSettings::CONFIG_CUSTOMER_NUMBER),
+        );
+        if ($customerNumber === null) {
+            throw new RuntimeException(message: 'The module setting "Customer Number" must be a positive integer.');
+        }
+
+        return $customerNumber;
+    }
+
+    protected function getStringParam(string $key): string
+    {
+        $value = $this->params[$key] ?? null;
+
+        return is_string(value: $value) ? $value : '';
     }
 }

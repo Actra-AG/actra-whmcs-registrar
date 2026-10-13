@@ -23,9 +23,11 @@ class TransferDomain extends AbstractAction
         $asciiDomainName = $params['domain_punycode'];
         try {
             $ownerContactData = $this->getRegistrantContactData(params: $params);
+            $nameservers = SubmittedNameservers::fromParams(params: $params);
 
             new ApiTransferDomain(
                 apiClient: $this->getApiClient(),
+                customerNumber: $this->getCustomerNumber(),
                 asciiDomainName: $asciiDomainName,
                 authCode: $params['eppcode'],
                 newOwnerContactData: $ownerContactData,
@@ -44,7 +46,7 @@ class TransferDomain extends AbstractAction
                     prefix: 'billing',
                     fallbackContactData: $ownerContactData
                 ),
-                newNameservers: $this->getNameservers(params: $params)
+                newNameservers: $nameservers === [] ? null : $nameservers,
             );
         } catch (Throwable $throwable) {
             $this->response = [
@@ -129,26 +131,5 @@ class TransferDomain extends AbstractAction
         }
 
         return true;
-    }
-
-    private function getNameservers(array $params): ?array
-    {
-        $nameservers = [];
-        for ($i = 1; $i <= 5; $i++) {
-            $key = 'ns' . $i . '_punycode';
-            if (!array_key_exists(
-                key: $key,
-                array: $params
-            )) {
-                break;
-            }
-            $nameserver = trim(string: $params[$key]);
-            if ($nameserver === '') {
-                continue;
-            }
-            $nameservers[] = $nameserver;
-        }
-
-        return $nameservers === [] ? null : $nameservers;
     }
 }

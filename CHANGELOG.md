@@ -1,5 +1,31 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- New required module setting **Customer Number**: the customer number at Actra billed for registered and transferred
+  domains. The Actra Domains REST API requires it for domain registrations and transfers. Existing installations
+  must enter it in **System Settings > Domain Registrars** before the next registration or transfer.
+
+### Fixed
+
+- Fixed saving nameservers and contact details with the current Actra Domains REST API, which expects the target
+  state of the domain (complete nameserver list, contact handles) instead of the changes to apply.
+- Fixed registering domains and saving nameservers with nameservers of other providers: the module no longer creates
+  host objects for them, which the API only allows below the registrar's own domains.
+- Fixed a fatal error when an API response does not contain an optional field, e.g. a contact of a domain.
+- Fixed a fatal error when saving contact details of a domain without registrant data.
+- Fixed host information reading the IP addresses from fields that do not exist in the API response.
+- API responses that are not JSON (e.g. the error page of a proxy) are reported with the API path and HTTP status
+  and are written to the module log.
+
+### Changed
+
+- The ASCII domain name is read from the `asciiName` field of the API, for correct names of IDN domains.
+- Error messages of the API include the error code reported by the API.
+- Nameservers submitted by WHMCS are compared and sent in lowercase, without duplicates.
+
 ## v0.4.0 - 2026-09-06
 
 ### Fixed

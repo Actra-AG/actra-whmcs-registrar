@@ -9,88 +9,47 @@ declare(strict_types=1);
 
 namespace WHMCS\Module\Registrar\Actra\action;
 
+use Override;
 use Throwable;
-use WHMCS\Module\Registrar\Actra\api\ApiCheckHost;
-use WHMCS\Module\Registrar\Actra\api\ApiCreateHost;
 use WHMCS\Module\Registrar\Actra\api\ApiInfoDomain;
 use WHMCS\Module\Registrar\Actra\api\ApiUpdateDomain;
 
 class SaveNameservers extends AbstractAction
 {
+    /** @var array{success: true}|array{error: string} */
     public readonly array $response;
 
+    #[Override]
     protected function execute(): void
     {
-        $params = $this->params;
-        $asciiDomainName = $params['domain_punycode'];
+        $asciiDomainName = $this->getStringParam(key: 'domain_punycode');
         try {
             $apiClient = $this->getApiClient();
-            $activeNameservers = (new ApiInfoDomain(
-                apiClient: $apiClient,
-                asciiDomainName: $asciiDomainName
-            ))->nameservers;
-            $submittedNameservers = [];
-            for ($i = 1; $i <= 5; $i++) {
-                $key = 'ns' . $i . '_punycode';
-                if (!array_key_exists(
-                    key: $key,
-                    array: $params
-                )) {
-                    break;
-                }
-                $nameserver = trim(string: $params[$key]);
-                if ($nameserver === '') {
-                    continue;
-                }
-                $submittedNameservers[] = strtolower(string: $nameserver);
-            }
-            $addNameservers = array_diff(
-                array_values(array: $submittedNameservers),
-                array_values(array: $activeNameservers)
-            );
-            $removeNameservers = array_diff(
-                array_values(array: $activeNameservers),
-                array_values(array: $submittedNameservers)
-            );
-            if (
-                $addNameservers === []
-                && $removeNameservers === []
-            ) {
-                $this->response = [
-                    'success' => true,
-                ];
-                return;
-            }
-            foreach ($addNameservers as $nameserver) {
-                if (!(new ApiCheckHost(
+            $activeNameservers = array_map(
+                callback: strtolower(...),
+                array: array_values(array: (new ApiInfoDomain(
                     apiClient: $apiClient,
-                    registry: 'SWITCH',
-                    nameserver: $nameserver
-                ))->isAvailable) {
-                    continue;
-                }
-                new ApiCreateHost(
+                    asciiDomainName: $asciiDomainName,
+                ))->nameservers),
+            );
+            $submittedNameservers = SubmittedNameservers::fromParams(params: $this->params);
+            // The API expects the complete list and rejects a request that does not change anything
+            if (!SubmittedNameservers::equal(first: $activeNameservers, second: $submittedNameservers)) {
+                new ApiUpdateDomain(
                     apiClient: $apiClient,
-                    registry: 'SWITCH',
-                    nameserver: $nameserver,
-                    ipv4: [],
-                    ipv6: []
+                    asciiDomainName: $asciiDomainName,
+                    nameservers: $submittedNameservers,
                 );
             }
-            new ApiUpdateDomain(
-                apiClient: $apiClient,
-                asciiDomainName: $asciiDomainName,
-                newNameservers: $addNameservers === [] ? null : $addNameservers,
-                removeNameservers: $removeNameservers === [] ? null : $removeNameservers
-            );
-            $this->response = [
-                'success' => true,
-            ];
-            return;
         } catch (Throwable $throwable) {
             $this->response = [
                 'error' => $throwable->getMessage(),
             ];
+
+            return;
         }
+        $this->response = [
+            'success' => true,
+        ];
     }
 }

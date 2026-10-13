@@ -18,13 +18,13 @@ readonly class ApiCheckContact
         string $registry,
         string $identifier
     ) {
-        $apiClient->get(
+        $response = $apiClient->get(
             path: 'checkContact',
             query: [
                 'registry' => $registry,
                 'identifier' => $identifier,
             ]
         );
-        $this->isAvailable = $apiClient->getFromResponse(key: 'isAvailable');
+        $this->isAvailable = $response->getBool(key: 'isAvailable');
     }
 }

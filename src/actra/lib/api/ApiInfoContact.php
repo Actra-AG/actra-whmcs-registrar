@@ -20,23 +20,13 @@ readonly class ApiInfoContact
         string $registry,
         string $identifier
     ) {
-        $apiClient->get(
+        $response = $apiClient->get(
             path: 'infoContact',
             query: [
                 'registry' => $registry,
                 'identifier' => $identifier,
             ]
         );
-        $this->domainContact = new DomainContact(
-            name: $apiClient->getFromResponse(key: 'name'),
-            org: $apiClient->getFromResponse(key: 'org'),
-            street: $apiClient->getFromResponse(key: 'street'),
-            addressRow2: $apiClient->getFromResponse(key: 'addressRow2'),
-            city: $apiClient->getFromResponse(key: 'city'),
-            postCode: $apiClient->getFromResponse(key: 'zipCode'),
-            countryCode: $apiClient->getFromResponse(key: 'countryCode'),
-            email: $apiClient->getFromResponse(key: 'email'),
-            phone: $apiClient->getFromResponse(key: 'phone')
-        );
+        $this->domainContact = DomainContact::fromApiRecord(record: $response);
     }
 }

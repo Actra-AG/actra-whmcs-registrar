@@ -9,53 +9,37 @@ declare(strict_types=1);
 
 namespace WHMCS\Module\Registrar\Actra\api;
 
+/**
+ * Changes a domain to the given target state; the API calculates the changes at the registry. A null argument leaves
+ * the value untouched, an empty contact handle removes the contact.
+ */
 readonly class ApiUpdateDomain
 {
+    /**
+     * @param list<string>|null $nameservers complete list of nameservers the domain should have afterwards
+     */
     public function __construct(
         ApiClient $apiClient,
         string $asciiDomainName,
-        ?array $newNameservers = null,
-        ?array $removeNameservers = null,
-        ?string $newAdminContact = null,
-        ?string $removeAdminContact = null,
-        ?string $newTechContact = null,
-        ?string $removeTechContact = null,
-        ?string $newBillingContact = null,
-        ?string $removeBillingContact = null,
+        ?array $nameservers = null,
+        ?string $registrant = null,
+        ?string $adminContact = null,
+        ?string $techContact = null,
+        ?string $billingContact = null,
         ?string $newAuthCode = null,
-        ?string $newRegistrant = null
     ) {
-        $body = [];
-        if ($newNameservers !== null) {
-            $body['newNameservers'] = $newNameservers;
-        }
-        if ($removeNameservers !== null) {
-            $body['removeNameservers'] = $removeNameservers;
-        }
-        if ($newAdminContact !== null) {
-            $body['newAdminContact'] = $newAdminContact;
-        }
-        if ($removeAdminContact !== null) {
-            $body['removeAdminContact'] = $removeAdminContact;
-        }
-        if ($newTechContact !== null) {
-            $body['newTechContact'] = $newTechContact;
-        }
-        if ($removeTechContact !== null) {
-            $body['removeTechContact'] = $removeTechContact;
-        }
-        if ($newBillingContact !== null) {
-            $body['newBillingContact'] = $newBillingContact;
-        }
-        if ($removeBillingContact !== null) {
-            $body['removeBillingContact'] = $removeBillingContact;
-        }
-        if ($newAuthCode !== null) {
-            $body['newAuthCode'] = $newAuthCode;
-        }
-        if ($newRegistrant !== null) {
-            $body['newRegistrant'] = $newRegistrant;
-        }
+        $body = array_filter(
+            array: [
+                'nameservers' => $nameservers,
+                'registrant' => $registrant,
+                'adminContact' => $adminContact,
+                'techContact' => $techContact,
+                'billingContact' => $billingContact,
+                'newAuthCode' => $newAuthCode,
+            ],
+            callback: static fn(array|string|null $value): bool => $value !== null,
+        );
+        // The API rejects a request that does not change anything
         if ($body === []) {
             return;
         }
@@ -64,7 +48,7 @@ readonly class ApiUpdateDomain
             query: [
                 'domainName' => $asciiDomainName,
             ],
-            body: $body
+            body: $body,
         );
     }
 }

@@ -17,6 +17,7 @@ use WHMCS\Module\Registrar\Actra\data\DsRecordCollection;
 readonly class ApiInfoDomain
 {
     public string $asciiName;
+    /** @var array<string, string> nameservers by WHMCS key (ns1, ns2, …) */
     public array $nameservers;
     public string $registrantIdentifier;
     public string $techIdentifier;
@@ -39,88 +40,64 @@ readonly class ApiInfoDomain
 
     public function __construct(
         ApiClient $apiClient,
-        string $asciiDomainName
+        string $asciiDomainName,
     ) {
-        $apiClient->get(
+        $response = $apiClient->get(
             path: 'infoDomain',
             query: [
                 'domainName' => $asciiDomainName,
-            ]
+            ],
         );
-        $this->asciiName = $apiClient->getFromResponse(key: 'name');
+        // `name` is the domain name as registered, which is the unicode form for IDNs at some registries
+        $asciiName = $response->getString(key: 'asciiName');
+        $this->asciiName = $asciiName === '' ? $response->getString(key: 'name') : $asciiName;
         $nameservers = [];
-        $i = 0;
-        foreach ($apiClient->getFromResponse(key: 'nameserver') as $nameserver) {
-            $i++;
-            $nameservers['ns' . $i] = $nameserver;
+        foreach ($response->getStringList(key: 'nameserver') as $index => $nameserver) {
+            $nameservers['ns' . ($index + 1)] = $nameserver;
         }
         $this->nameservers = $nameservers;
-        $this->registrantIdentifier = (string) $apiClient->getFromResponse(key: 'registrant');
-        $this->techIdentifier = (string) $apiClient->getFromResponse(key: 'techContact');
-        $this->billingIdentifier = (string) $apiClient->getFromResponse(key: 'billingContact');
-        $this->adminIdentifier = (string) $apiClient->getFromResponse(key: 'adminContact');
-        $registrant = null;
-        $tech = null;
-        $billing = null;
-        $admin = null;
-        foreach ((array) $apiClient->getFromResponse(key: 'contacts') as $originalType => $contact) {
-            $domainContact = new DomainContact(
-                name: $contact->name,
-                org: $contact->org,
-                street: $contact->street,
-                addressRow2: $contact->addressRow2,
-                city: $contact->city,
-                postCode: $contact->zipCode,
-                countryCode: $contact->countryCode,
-                email: $contact->email,
-                phone: $contact->phone
-            );
-            switch ($originalType) {
-                case 'registrant':
-                    $registrant = $domainContact;
-                    break;
-                case 'tech':
-                    $tech = $domainContact;
-                    break;
-                case 'billing':
-                    $billing = $domainContact;
-                    break;
-                case 'admin':
-                    $admin = $domainContact;
-                    break;
-            }
-        }
-        $this->registrant = $registrant;
-        $this->tech = $tech;
-        $this->billing = $billing;
-        $this->admin = $admin;
-        $normalizedStatus = trim(string: (string) $apiClient->getFromResponse(key: 'normalizedStatus'));
+        $this->registrantIdentifier = $response->getString(key: 'registrant');
+        $this->techIdentifier = $response->getString(key: 'techContact');
+        $this->billingIdentifier = $response->getString(key: 'billingContact');
+        $this->adminIdentifier = $response->getString(key: 'adminContact');
+        // The API uses the keys registrant, admin, tech and billing
+        $contacts = $response->getRecords(key: 'contacts');
+        $this->registrant = array_key_exists(key: 'registrant', array: $contacts)
+            ? DomainContact::fromApiRecord(record: $contacts['registrant'])
+            : null;
+        $this->tech = array_key_exists(key: 'tech', array: $contacts)
+            ? DomainContact::fromApiRecord(record: $contacts['tech'])
+            : null;
+        $this->billing = array_key_exists(key: 'billing', array: $contacts)
+            ? DomainContact::fromApiRecord(record: $contacts['billing'])
+            : null;
+        $this->admin = array_key_exists(key: 'admin', array: $contacts)
+            ? DomainContact::fromApiRecord(record: $contacts['admin'])
+            : null;
+        $normalizedStatus = trim(string: $response->getString(key: 'normalizedStatus'));
         $this->normalizedStatus = $normalizedStatus === '' ? 'unknown' : $normalizedStatus;
-        $expiryDate = $apiClient->getFromResponse(key: 'expiryDate');
-        $this->expiryDate = $expiryDate === null || $expiryDate === ''
-            ? null
-            : Carbon::parse(time: $expiryDate);
+        $expiryDate = $response->getString(key: 'expiryDate');
+        $this->expiryDate = $expiryDate === '' ? null : Carbon::parse(time: $expiryDate);
         // The API derives these from the raw registry status codes so that the registry-specific vocabulary of every
         // supported TLD does not have to be interpreted here.
-        $this->hasTransferLock = $apiClient->getFromResponse(key: 'transferLock') === true;
-        $this->hasDeleteLock = $apiClient->getFromResponse(key: 'deleteLock') === true;
-        $this->hasUpdateLock = $apiClient->getFromResponse(key: 'updateLock') === true;
-        $this->hasRenewLock = $apiClient->getFromResponse(key: 'renewLock') === true;
-        $this->isDelegated = $apiClient->getFromResponse(key: 'delegated') === true;
-        $this->hasPendingTransfer = $apiClient->getFromResponse(key: 'pendingTransfer') === true;
-        $restorable = $apiClient->getFromResponse(key: 'restorable');
+        $this->hasTransferLock = $response->getBool(key: 'transferLock');
+        $this->hasDeleteLock = $response->getBool(key: 'deleteLock');
+        $this->hasUpdateLock = $response->getBool(key: 'updateLock');
+        $this->hasRenewLock = $response->getBool(key: 'renewLock');
+        $this->isDelegated = $response->getBool(key: 'delegated');
+        $this->hasPendingTransfer = $response->getBool(key: 'pendingTransfer');
         // Null means the registry reported 'pendingDelete' without RGP data, so redemption and final deletion cannot
         // be told apart.
-        $this->isRestorable = is_bool(value: $restorable) ? $restorable : null;
+        $this->isRestorable = $response->getNullableBool(key: 'restorable');
         $this->dsRecordCollection = new DsRecordCollection();
-        foreach ((array) $apiClient->getFromResponse(key: 'dsRecords') as $dsRecord) {
+        foreach ($response->getRecords(key: 'dsRecords') as $dsRecord) {
             $this->dsRecordCollection->add(
                 dsRecord: new DsRecord(
-                    keyTag: $dsRecord->keyTag,
-                    algorithm: $dsRecord->algorithm,
-                    digestType: $dsRecord->digestType,
-                    digest: $dsRecord->digest
-                )
+                    keyTag: $dsRecord->getInt(key: 'keyTag'),
+                    algorithm: $dsRecord->getInt(key: 'algorithm'),
+                    digestType: $dsRecord->getInt(key: 'digestType'),
+                    digest: $dsRecord->getString(key: 'digest'),
+                ),
             );
         }
     }

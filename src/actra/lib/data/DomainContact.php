@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace WHMCS\Module\Registrar\Actra\data;
 
+use WHMCS\Module\Registrar\Actra\api\ApiRecord;
+
 readonly class DomainContact
 {
     public function __construct(
@@ -22,6 +24,24 @@ readonly class DomainContact
         public string $email,
         public string $phone,
     ) {}
+
+    /**
+     * Contact of an API response (`Contact` schema).
+     */
+    public static function fromApiRecord(ApiRecord $record): self
+    {
+        return new self(
+            name: $record->getString(key: 'name'),
+            org: $record->getString(key: 'org'),
+            street: $record->getString(key: 'street'),
+            addressRow2: $record->getString(key: 'addressRow2'),
+            city: $record->getString(key: 'city'),
+            postCode: $record->getString(key: 'zipCode'),
+            countryCode: $record->getString(key: 'countryCode'),
+            email: $record->getString(key: 'email'),
+            phone: $record->getString(key: 'phone'),
+        );
+    }
 
     public function getWhmcsDataArray(): array
     {

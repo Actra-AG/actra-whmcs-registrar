@@ -9,91 +9,106 @@ declare(strict_types=1);
 
 namespace WHMCS\Module\Registrar\Actra\api;
 
-use Exception;
-use stdClass;
+use RuntimeException;
 use WHMCS\Module\Registrar\Actra\action\Log;
 
 class ApiClient
 {
-    private stdClass $responseObject;
-
     public function __construct(
         private readonly string $apiUrl,
         private readonly string $apiKey,
-        public readonly bool $log
+        public readonly bool $log,
     ) {}
 
+    /**
+     * @param array<string, string|int> $query
+     */
     public function get(
         string $path,
         array $query = [],
-        int $timeoutInSeconds = 10
-    ): void {
-        $this->request(
+        int $timeoutInSeconds = 10,
+    ): ApiRecord {
+        return $this->request(
             method: 'GET',
             path: $path,
             query: $query,
             body: null,
-            timeoutInSeconds: $timeoutInSeconds
+            timeoutInSeconds: $timeoutInSeconds,
         );
     }
 
+    /**
+     * @param array<string, string|int> $query
+     * @param array<string, mixed> $body JSON request body
+     */
     public function post(
         string $path,
         array $query = [],
         array $body = [],
-        int $timeoutInSeconds = 10
-    ): void {
-        $this->request(
+        int $timeoutInSeconds = 10,
+    ): ApiRecord {
+        return $this->request(
             method: 'POST',
             path: $path,
             query: $query,
             body: $body,
-            timeoutInSeconds: $timeoutInSeconds
+            timeoutInSeconds: $timeoutInSeconds,
         );
     }
 
+    /**
+     * @param array<string, string|int> $query
+     * @param array<string, mixed> $body JSON request body
+     */
     public function patch(
         string $path,
         array $query = [],
         array $body = [],
-        int $timeoutInSeconds = 10
-    ): void {
-        $this->request(
+        int $timeoutInSeconds = 10,
+    ): ApiRecord {
+        return $this->request(
             method: 'PATCH',
             path: $path,
             query: $query,
             body: $body,
-            timeoutInSeconds: $timeoutInSeconds
+            timeoutInSeconds: $timeoutInSeconds,
         );
     }
 
+    /**
+     * @param array<string, string|int> $query
+     */
     public function delete(
         string $path,
         array $query = [],
-        int $timeoutInSeconds = 10
-    ): void {
-        $this->request(
+        int $timeoutInSeconds = 10,
+    ): ApiRecord {
+        return $this->request(
             method: 'DELETE',
             path: $path,
             query: $query,
             body: null,
-            timeoutInSeconds: $timeoutInSeconds
+            timeoutInSeconds: $timeoutInSeconds,
         );
     }
 
+    /**
+     * @param array<string, string|int> $query
+     * @param array<string, mixed>|null $body JSON request body
+     */
     private function request(
         string $method,
         string $path,
         array $query,
         ?array $body,
-        int $timeoutInSeconds
-    ): void {
+        int $timeoutInSeconds,
+    ): ApiRecord {
         $url = rtrim(
             string: $this->apiUrl,
-            characters: '/'
+            characters: '/',
         ) . '/' . ltrim(
             string: $path,
-            characters: '/'
+            characters: '/',
         );
 
         if ($query !== []) {
@@ -104,12 +119,12 @@ class ApiClient
         curl_setopt(
             handle: $ch,
             option: CURLOPT_URL,
-            value: $url
+            value: $url,
         );
         curl_setopt(
             handle: $ch,
             option: CURLOPT_CUSTOMREQUEST,
-            value: $method
+            value: $method,
         );
 
         if ($body !== null) {
@@ -118,30 +133,30 @@ class ApiClient
                 option: CURLOPT_POSTFIELDS,
                 value: json_encode(
                     value: $body,
-                    flags: JSON_THROW_ON_ERROR
-                )
+                    flags: JSON_THROW_ON_ERROR,
+                ),
             );
         }
 
         curl_setopt(
             handle: $ch,
             option: CURLOPT_RETURNTRANSFER,
-            value: 1
+            value: true,
         );
         curl_setopt(
             handle: $ch,
             option: CURLOPT_SSL_VERIFYHOST,
-            value: 2
+            value: 2,
         );
         curl_setopt(
             handle: $ch,
             option: CURLOPT_SSL_VERIFYPEER,
-            value: 1
+            value: true,
         );
         curl_setopt(
             handle: $ch,
             option: CURLOPT_TIMEOUT,
-            value: $timeoutInSeconds
+            value: $timeoutInSeconds,
         );
         curl_setopt(
             handle: $ch,
@@ -150,27 +165,24 @@ class ApiClient
                 'Authorization: Bearer ' . $this->apiKey,
                 'Accept: application/json',
                 'Content-Type: application/json',
-            ]
+            ],
         );
 
         $response = curl_exec(handle: $ch);
-        if (curl_errno(handle: $ch)) {
-            throw new Exception(
-                message: 'Connection Error: ' . curl_errno(handle: $ch) . ' - ' . curl_error(handle: $ch)
+        $errorNumber = curl_errno(handle: $ch);
+        if ($errorNumber !== 0) {
+            throw new RuntimeException(
+                message: 'Connection Error: ' . $errorNumber . ' - ' . curl_error(handle: $ch),
             );
         }
 
         $httpStatusCode = curl_getinfo(
             handle: $ch,
-            option: CURLINFO_HTTP_CODE
+            option: CURLINFO_HTTP_CODE,
         );
-        curl_close(handle: $ch);
+        $responseBody = is_string(value: $response) ? $response : '';
 
-        $this->responseObject = json_decode(
-            json: (string) $response,
-            flags: JSON_THROW_ON_ERROR
-        );
-
+        // Logged before parsing, so invalid and failed responses are logged too
         if ($this->log) {
             Log::execute(
                 className: static::class,
@@ -180,52 +192,15 @@ class ApiClient
                     'query' => $query,
                     'body' => $body,
                     'httpStatusCode' => $httpStatusCode,
-                    'response' => $response,
-                ]
+                    'response' => $responseBody,
+                ],
             );
         }
 
-        if ($this->responseObject->success !== true) {
-            $message = 'API request failed';
-            if (
-                property_exists(
-                    object_or_class: $this->responseObject,
-                    property: 'error'
-                )
-                && property_exists(
-                    object_or_class: $this->responseObject->error,
-                    property: 'message'
-                )
-            ) {
-                $message = $this->responseObject->error->message;
-            }
-
-            throw new Exception(
-                message: sprintf(
-                    'API request "%s" failed with HTTP %d: %s',
-                    $path,
-                    $httpStatusCode,
-                    $message
-                )
-            );
-        }
-    }
-
-    public function getFromResponse(string $key): string|array|bool|object|null
-    {
-        if (
-            !property_exists(
-                object_or_class: $this->responseObject,
-                property: 'data'
-            )
-            || !is_object(value: $this->responseObject->data)
-        ) {
-            return '';
-        }
-
-        return property_exists(
-            object_or_class: $this->responseObject->data,
-            property: $key
-        ) ? $this->responseObject->data->{$key} : '';
+        return ApiResponse::parse(
+            path: $path,
+            httpStatusCode: $httpStatusCode,
+            body: $responseBody,
+        );
     }
 }

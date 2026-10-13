@@ -20,9 +20,8 @@ class RegisterNameserver extends AbstractAction
 
     protected function execute(): void
     {
-        $params = $this->params;
-        $nameserver = $params['nameserver_punycode'];
-        $ipAddress = $params['ipaddress'];
+        $nameserver = $this->getStringParam(key: 'nameserver_punycode');
+        $ipAddress = trim(string: $this->getStringParam(key: 'ipaddress'));
         $ipv4 = [];
         $ipv6 = [];
         if (str_contains(
@@ -44,7 +43,6 @@ class RegisterNameserver extends AbstractAction
             }
             new ApiCreateHost(
                 apiClient: $apiClient,
-                registry: 'SWITCH',
                 nameserver: $nameserver,
                 ipv4: $ipv4,
                 ipv6: $ipv6

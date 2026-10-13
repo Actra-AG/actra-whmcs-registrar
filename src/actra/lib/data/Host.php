@@ -16,9 +16,12 @@ readonly class Host
     public function __construct(
         public string $name,
         public string $roid,
+        /** @var list<string> */
         public array $status,
+        /** @var list<string> */
         public array $ipv4List,
+        /** @var list<string> */
         public array $ipv6List,
-        public DateTimeImmutable $createdDate
+        public ?DateTimeImmutable $createdDate,
     ) {}
 }

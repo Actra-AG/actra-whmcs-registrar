@@ -17,6 +17,7 @@ readonly class ApiTransferDomain
 
     public function __construct(
         ApiClient $apiClient,
+        int $customerNumber,
         string $asciiDomainName,
         string $authCode,
         ?array $newOwnerContactData,
@@ -26,6 +27,7 @@ readonly class ApiTransferDomain
         ?array $newNameservers
     ) {
         $body = [
+            'customerNumber' => $customerNumber,
             'domainName' => $asciiDomainName,
             'authCode' => $authCode,
         ];
@@ -45,12 +47,12 @@ readonly class ApiTransferDomain
             $body['newNameservers'] = $newNameservers;
         }
 
-        $apiClient->post(
+        $response = $apiClient->post(
             path: 'transferDomain',
-            body: $body
+            body: $body,
         );
-        $this->isActionPending = $apiClient->getFromResponse(key: 'isActionPending');
-        $this->registrant = $apiClient->getFromResponse(key: 'registrant');
-        $this->techContact = $apiClient->getFromResponse(key: 'techContact');
+        $this->isActionPending = $response->getBool(key: 'isActionPending');
+        $this->registrant = $response->getString(key: 'registrant');
+        $this->techContact = $response->getString(key: 'techContact');
     }
 }

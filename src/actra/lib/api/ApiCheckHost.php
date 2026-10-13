@@ -18,13 +18,13 @@ readonly class ApiCheckHost
         string $registry,
         string $nameserver
     ) {
-        $apiClient->get(
+        $response = $apiClient->get(
             path: 'checkHost',
             query: [
                 'registry' => $registry,
                 'hostname' => $nameserver,
             ]
         );
-        $this->isAvailable = $apiClient->getFromResponse(key: 'isAvailable');
+        $this->isAvailable = $response->getBool(key: 'isAvailable');
     }
 }

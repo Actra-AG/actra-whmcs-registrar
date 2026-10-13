@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace WHMCS\Module\Registrar\Actra\action;
 
+use Override;
 use Throwable;
 use WHMCS\Module\Registrar\Actra\api\ApiCreateContact;
 use WHMCS\Module\Registrar\Actra\api\ApiInfoDomain;
@@ -19,6 +20,7 @@ class SaveContactDetails extends AbstractAction
 {
     public readonly array $response;
 
+    #[Override]
     protected function execute(): void
     {
         $params = $this->params;
@@ -43,8 +45,10 @@ class SaveContactDetails extends AbstractAction
             );
             $newRegistrant = null;
             $newTechContact = null;
-            $removeTechContact = null;
-            if (!$apiDomainInfo->registrant->equals(other: $whmcsNewRegistrant)) {
+            if (
+                $apiDomainInfo->registrant === null
+                || !$apiDomainInfo->registrant->equals(other: $whmcsNewRegistrant)
+            ) {
                 $newRegistrant = (new ApiCreateContact(
                     apiClient: $apiClient,
                     registry: 'SWITCH',
@@ -66,21 +70,18 @@ class SaveContactDetails extends AbstractAction
                 $apiDomainInfo->tech === null
                 || !$apiDomainInfo->tech->equals(other: $whmcsNewTechnicalContact)
             ) {
-                $newTechContact = new ApiCreateContact(
+                // The new handle replaces the current technical contact
+                $newTechContact = (new ApiCreateContact(
                     apiClient: $apiClient,
                     registry: 'SWITCH',
-                    domainContact: $whmcsNewTechnicalContact
-                );
-                if ($apiDomainInfo->tech !== null) {
-                    $removeTechContact = $apiDomainInfo->techIdentifier;
-                }
+                    domainContact: $whmcsNewTechnicalContact,
+                ))->identifier;
             }
             new ApiUpdateDomain(
                 apiClient: $apiClient,
                 asciiDomainName: $asciiDomainName,
-                newTechContact: $newTechContact?->identifier,
-                removeTechContact: $removeTechContact,
-                newRegistrant: $newRegistrant,
+                registrant: $newRegistrant,
+                techContact: $newTechContact,
             );
             $this->response = [
                 'success' => true,

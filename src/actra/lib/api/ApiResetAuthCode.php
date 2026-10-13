@@ -17,12 +17,12 @@ readonly class ApiResetAuthCode
         ApiClient $apiClient,
         string $asciiDomainName
     ) {
-        $apiClient->post(
+        $response = $apiClient->post(
             path: 'resetAuthCode',
             query: [
                 'domainName' => $asciiDomainName,
             ]
         );
-        $this->authCode = $apiClient->getFromResponse(key: 'authCode');
+        $this->authCode = $response->getString(key: 'authCode');
     }
 }

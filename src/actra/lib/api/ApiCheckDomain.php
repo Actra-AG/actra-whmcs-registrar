@@ -17,12 +17,12 @@ readonly class ApiCheckDomain
         ApiClient $apiClient,
         string $asciiDomainName
     ) {
-        $apiClient->get(
+        $response = $apiClient->get(
             path: 'checkDomain',
             query: [
                 'domainName' => $asciiDomainName,
             ]
         );
-        $this->isAvailable = $apiClient->getFromResponse(key: 'isAvailable');
+        $this->isAvailable = $response->getBool(key: 'isAvailable');
     }
 }

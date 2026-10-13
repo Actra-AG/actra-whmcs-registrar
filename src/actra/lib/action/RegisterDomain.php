@@ -9,72 +9,46 @@ declare(strict_types=1);
 
 namespace WHMCS\Module\Registrar\Actra\action;
 
-use Exception;
+use Override;
+use RuntimeException;
 use Throwable;
 use WHMCS\Module\Registrar\Actra\api\ApiCheckDomain;
-use WHMCS\Module\Registrar\Actra\api\ApiCheckHost;
 use WHMCS\Module\Registrar\Actra\api\ApiCreateDomain;
-use WHMCS\Module\Registrar\Actra\api\ApiCreateHost;
 
 class RegisterDomain extends AbstractAction
 {
+    /** @var array{success: true}|array{error: string} */
     public readonly array $response;
 
+    #[Override]
     protected function execute(): void
     {
-        $params = $this->params;
-        $domainName = $params['domain_punycode'];
+        $domainName = $this->getStringParam(key: 'domain_punycode');
         try {
             $apiClient = $this->getApiClient();
             if (!(new ApiCheckDomain(
                 apiClient: $apiClient,
-                asciiDomainName: $domainName
+                asciiDomainName: $domainName,
             ))->isAvailable) {
-                throw new Exception(message: $domainName . ': Domain is not available');
+                throw new RuntimeException(message: $domainName . ': Domain is not available');
             }
-            $nameservers = [];
-            for ($i = 1; $i <= 5; $i++) {
-                $key = 'ns' . $i . '_punycode';
-                if (!array_key_exists(
-                    key: $key,
-                    array: $params
-                )) {
-                    break;
-                }
-                $nameserver = trim(string: $params[$key]);
-                if ($nameserver === '') {
-                    continue;
-                }
-                $nameservers[] = $nameserver;
-                if (!(new ApiCheckHost(
-                    apiClient: $apiClient,
-                    registry: 'SWITCH',
-                    nameserver: $nameserver
-                ))->isAvailable) {
-                    continue;
-                }
-                new ApiCreateHost(
-                    apiClient: $apiClient,
-                    registry: 'SWITCH',
-                    nameserver: $nameserver,
-                    ipv4: [],
-                    ipv6: []
-                );
-            }
-            $registrant = new CreateRegistrant(params: $params);
+            // Glue records are created with RegisterNameserver; the API creates no hosts of other registrars
+            $registrant = new CreateRegistrant(params: $this->params);
             new ApiCreateDomain(
                 apiClient: $apiClient,
+                customerNumber: $this->getCustomerNumber(),
                 domainName: $domainName,
-                nameservers: $nameservers,
+                nameservers: SubmittedNameservers::fromParams(params: $this->params),
                 registrant: $registrant->identifier,
                 adminContact: '',
                 techContact: $registrant->identifier,
-                billingContact: ''
+                billingContact: '',
             );
         } catch (Throwable $throwable) {
             $this->response = [
                 'error' => $throwable->getMessage(),
             ];
+
             return;
         }
 

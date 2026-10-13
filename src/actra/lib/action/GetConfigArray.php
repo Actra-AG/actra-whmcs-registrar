@@ -32,7 +32,7 @@ class GetConfigArray extends AbstractAction
                 'Type' => 'text',
                 'Size' => '25',
                 'Default' => '',
-                'Description' => 'https://api.example.com/v1/',
+                'Description' => 'Base URL of the Actra Domains REST API, e.g. https://www.example.com/api/v1',
             ],
             ModuleSettings::CONFIG_API_KEY => [
                 'FriendlyName' => 'API Key',
@@ -40,6 +40,13 @@ class GetConfigArray extends AbstractAction
                 'Size' => '25',
                 'Default' => '',
                 'Description' => '',
+            ],
+            ModuleSettings::CONFIG_CUSTOMER_NUMBER => [
+                'FriendlyName' => 'Customer Number',
+                'Type' => 'text',
+                'Size' => '10',
+                'Default' => '',
+                'Description' => 'Customer number at Actra to be billed for registered and transferred domains.',
             ],
             ModuleSettings::CONFIG_LOG => [
                 'FriendlyName' => 'Log',

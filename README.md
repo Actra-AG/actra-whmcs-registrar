@@ -84,7 +84,8 @@ After installation, you may need to move or symlink the module files to your WHM
 1. Log in to your WHMCS Admin Area.
 2. Navigate to **System Settings > Domain Registrars**.
 3. Activate the **actra** module.
-4. Enter your API credentials and configure the available options.
+4. Enter the API URL (base URL of the Actra Domains REST API, ending with `/api/v1`), your API key and your customer
+   number at Actra, and configure the available options.
 
 ## Development
 
