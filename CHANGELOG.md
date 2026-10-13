@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.6.1 - 2026-10-13
+
+### Fixed
+
+- The module logo is readable on the light backgrounds of the WHMCS admin area: the white lettering is shown on the
+  navy background of the Actra website.
+
 ## v0.6.0 - 2026-10-13
 
 ### Added
