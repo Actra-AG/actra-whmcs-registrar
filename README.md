@@ -63,15 +63,30 @@ contact data is incomplete or unavailable, the module falls back to the registra
 
 ## Installation
 
+WHMCS loads the module from `modules/registrars/actra` and autoloads its classes from the `lib` directory there. The
+module has no runtime dependencies.
+
 ### Via Composer (Recommended)
 
-To install the module via composer, run:
+Do not run Composer in the WHMCS root directory: WHMCS ships its own `vendor` directory, which Composer would
+overwrite. Install the package in a separate directory outside the WHMCS installation instead, and link the module
+directory into WHMCS:
 
 ```bash
+mkdir -p /path/to/whmcs-modules && cd /path/to/whmcs-modules
 composer require actra/actra-whmcs-registrar
+ln -s /path/to/whmcs-modules/vendor/actra/actra-whmcs-registrar/src/actra /path/to/whmcs/modules/registrars/actra
 ```
 
-After installation, you may need to move or symlink the module files to your WHMCS `modules/registrars/actra` directory.
+Update with `composer update actra/actra-whmcs-registrar` in that directory. If your hosting does not allow symbolic
+links (e.g. `open_basedir`), copy the directory instead after every update:
+
+```bash
+cd /path/to/whmcs-modules/vendor/actra/actra-whmcs-registrar
+rsync -a --delete src/actra/ /path/to/whmcs/modules/registrars/actra/
+```
+
+Read the [CHANGELOG](CHANGELOG.md) before updating: minor versions may require changes of the module settings.
 
 ### Manual Installation
 
