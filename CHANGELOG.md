@@ -103,6 +103,18 @@
 
 ## v0.1.2 - 2026-05-18
 
+### Fixed
+
+- Simplified the nameserver keys in the domain information returned to WHMCS.
+
 ## v0.1.1 - 2026-04-14
 
+### Changed
+
+- Improved the compatibility of the cURL requests and the robustness of the logging.
+
 ## v0.1.0 - 2026-04-04
+
+### Added
+
+- First version of the Actra registrar module for WHMCS, installable with Composer.
