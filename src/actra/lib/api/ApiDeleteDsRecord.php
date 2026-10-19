@@ -20,6 +20,7 @@ readonly class ApiDeleteDsRecord
     ) {
         $apiClient->delete(
             path: 'deleteDsRecord',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE,
             query: [
                 'domainName' => $asciiDomainName,
                 'keyTag' => $dsRecord->keyTag,

@@ -26,7 +26,8 @@ readonly class ApiAddDsRecord
                 'alg' => $dsRecord->algorithm,
                 'digestType' => $dsRecord->digestType,
                 'digest' => $dsRecord->digest,
-            ]
+            ],
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE
         );
     }
 }

@@ -15,7 +15,6 @@ readonly class Host
 {
     public function __construct(
         public string $name,
-        public string $roid,
         /** @var list<string> */
         public array $status,
         /** @var list<string> */

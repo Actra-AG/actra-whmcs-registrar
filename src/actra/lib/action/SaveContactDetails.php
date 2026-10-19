@@ -11,11 +11,16 @@ namespace WHMCS\Module\Registrar\Actra\action;
 
 use Override;
 use Throwable;
+use WHMCS\Module\Registrar\Actra\api\ApiClient;
 use WHMCS\Module\Registrar\Actra\api\ApiCreateContact;
 use WHMCS\Module\Registrar\Actra\api\ApiInfoDomain;
 use WHMCS\Module\Registrar\Actra\api\ApiUpdateDomain;
 use WHMCS\Module\Registrar\Actra\data\DomainContact;
 
+/**
+ * Saves the contacts WHMCS shows (the roles of GetContactDetails). A changed contact is created as a new contact and
+ * replaces the current one; the API reuses identical contacts.
+ */
 class SaveContactDetails extends AbstractAction
 {
     public readonly array $response;
@@ -31,66 +36,72 @@ class SaveContactDetails extends AbstractAction
                 apiClient: $apiClient,
                 asciiDomainName: $asciiDomainName
             );
-            $newContactDetails = $params['contactdetails'];
-            $whmcsNewRegistrant = new DomainContact(
-                name: $newContactDetails['Registrant']['Name'],
-                org: $newContactDetails['Registrant']['Organization'],
-                street: $newContactDetails['Registrant']['Street 1'],
-                addressRow2: $newContactDetails['Registrant']['Street 2'],
-                city: $newContactDetails['Registrant']['City'],
-                postCode: $newContactDetails['Registrant']['Postcode'],
-                countryCode: $newContactDetails['Registrant']['Country'],
-                email: $newContactDetails['Registrant']['Email'],
-                phone: $newContactDetails['Registrant']['Phone'],
-            );
-            $newRegistrant = null;
-            $newTechContact = null;
-            if (
-                $apiDomainInfo->registrant === null
-                || !$apiDomainInfo->registrant->equals(other: $whmcsNewRegistrant)
-            ) {
-                $newRegistrant = (new ApiCreateContact(
-                    apiClient: $apiClient,
-                    registry: 'SWITCH',
-                    domainContact: $whmcsNewRegistrant
-                ))->identifier;
-            }
-            $whmcsNewTechnicalContact = new DomainContact(
-                name: $newContactDetails['Technical']['Name'],
-                org: $newContactDetails['Technical']['Organization'],
-                street: $newContactDetails['Technical']['Street 1'],
-                addressRow2: $newContactDetails['Technical']['Street 2'],
-                city: $newContactDetails['Technical']['City'],
-                postCode: $newContactDetails['Technical']['Postcode'],
-                countryCode: $newContactDetails['Technical']['Country'],
-                email: $newContactDetails['Technical']['Email'],
-                phone: $newContactDetails['Technical']['Phone'],
-            );
-            if (
-                $apiDomainInfo->tech === null
-                || !$apiDomainInfo->tech->equals(other: $whmcsNewTechnicalContact)
-            ) {
-                // The new handle replaces the current technical contact
-                $newTechContact = (new ApiCreateContact(
-                    apiClient: $apiClient,
-                    registry: 'SWITCH',
-                    domainContact: $whmcsNewTechnicalContact,
-                ))->identifier;
-            }
+            $contactDetails = is_array(value: $params['contactdetails'] ?? null) ? $params['contactdetails'] : [];
             new ApiUpdateDomain(
                 apiClient: $apiClient,
                 asciiDomainName: $asciiDomainName,
-                registrant: $newRegistrant,
-                techContact: $newTechContact,
+                registrant: $this->createChangedContact(
+                    apiClient: $apiClient,
+                    whmcsData: $contactDetails['Registrant'] ?? null,
+                    current: $apiDomainInfo->registrant,
+                    addIfMissing: true,
+                ),
+                // Only roles the domain has: a registry without admin or billing contacts (e.g. Switch) rejects them
+                adminContact: $this->createChangedContact(
+                    apiClient: $apiClient,
+                    whmcsData: $contactDetails['Admin'] ?? null,
+                    current: $apiDomainInfo->admin,
+                    addIfMissing: false,
+                ),
+                techContact: $this->createChangedContact(
+                    apiClient: $apiClient,
+                    whmcsData: $contactDetails['Technical'] ?? null,
+                    current: $apiDomainInfo->tech,
+                    addIfMissing: true,
+                ),
+                billingContact: $this->createChangedContact(
+                    apiClient: $apiClient,
+                    whmcsData: $contactDetails['Billing'] ?? null,
+                    current: $apiDomainInfo->billing,
+                    addIfMissing: false,
+                ),
             );
-            $this->response = [
-                'success' => true,
-            ];
-            return;
         } catch (Throwable $throwable) {
             $this->response = [
-                'error' => $throwable->getMessage(),
+                'error' => $this->getErrorMessage(throwable: $throwable),
             ];
+
+            return;
         }
+        $this->response = [
+            'success' => true,
+        ];
+    }
+
+    /**
+     * Public contact ID of the new contact, or null to leave the role untouched (not sent by WHMCS, unchanged, or
+     * missing on the domain and not to be added).
+     */
+    private function createChangedContact(
+        ApiClient $apiClient,
+        mixed $whmcsData,
+        ?DomainContact $current,
+        bool $addIfMissing,
+    ): ?string {
+        if (!is_array(value: $whmcsData)) {
+            return null;
+        }
+        if ($current === null && !$addIfMissing) {
+            return null;
+        }
+        $contact = DomainContact::fromWhmcsDataArray(data: $whmcsData);
+        if ($current !== null && $current->equals(other: $contact)) {
+            return null;
+        }
+
+        return (new ApiCreateContact(
+            apiClient: $apiClient,
+            domainContact: $contact,
+        ))->identifier;
     }
 }

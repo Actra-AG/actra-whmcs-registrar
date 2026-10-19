@@ -19,6 +19,7 @@ readonly class ApiResetAuthCode
     ) {
         $response = $apiClient->post(
             path: 'resetAuthCode',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE,
             query: [
                 'domainName' => $asciiDomainName,
             ]

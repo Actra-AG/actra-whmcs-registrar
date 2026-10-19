@@ -15,13 +15,12 @@ readonly class ApiCheckHost
 
     public function __construct(
         ApiClient $apiClient,
-        string $registry,
         string $nameserver
     ) {
         $response = $apiClient->get(
             path: 'checkHost',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_QUERY,
             query: [
-                'registry' => $registry,
                 'hostname' => $nameserver,
             ]
         );

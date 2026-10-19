@@ -14,10 +14,12 @@ This project follows the Actra coding standard, installed as development depende
 
 ## Project context
 
-- WHMCS registrar module for the Actra Domains REST API, Composer package `actra/actra-whmcs-registrar` (MIT, public).
+- WHMCS registrar module for the Actra registrar API, Composer package `actra/actra-whmcs-registrar` (MIT, public).
   Used by WHMCS installations of Actra and its customers to register, transfer and manage domains.
 - PHP version: 8.3, for the module and the development tools (DDEV), because WHMCS only supports PHP 8.3.
 - Releases are Git tags; the GitHub release is created from [CHANGELOG.md](CHANGELOG.md) when the tag is pushed.
+- The repository is public, the application behind the API is not: texts of the repository (README, CHANGELOG, texts
+  of the module, comments, commit messages) call it "the Actra registrar API" or "Actra", never by its internal name.
 - Ongoing goal: reduce `phpstan-baseline.neon` (legacy code from before the coding standard was introduced).
 
 ## Project-specific rules
@@ -27,7 +29,7 @@ This project follows the Actra coding standard, installed as development depende
     entry functions (`actra_*`, see https://developers.whmcs.com/domain-registrars/function-index/); they only
     delegate to an action class.
   - `src/actra/lib/action/`: one class per WHMCS function, maps WHMCS parameters to API calls and back.
-  - `src/actra/lib/api/`: one class per Actra Domains API endpoint, `ApiClient` does the HTTP (cURL) requests.
+  - `src/actra/lib/api/`: one class per Actra registrar API endpoint, `ApiClient` does the HTTP (cURL) requests.
   - `src/actra/lib/data/`, `src/actra/lib/settings/`: value objects, enums and module settings.
 - The module has no runtime dependencies besides PHP and WHMCS. WHMCS classes (`WHMCS\Domain\…`,
   `WHMCS\Carbon`, …) are not available in this repository. New code declares the WHMCS classes it uses in
@@ -35,8 +37,8 @@ This project follows the Actra coding standard, installed as development depende
 - Languages: German and English. Every text shown to admins or clients is in `src/actra/lang/english.php` and
   `src/actra/lang/german.php` (Swiss spelling, no ß) and is read with the `Translator`; a test checks that both files
   have the same keys and placeholders. Templates get the texts as `$actraLang` and escape them. Error messages of the
-  Actra Domains API are shown as received.
-- The API classes follow the OpenAPI specification of the Actra Domains REST API (`GET <API URL>/openapi` with an API
+  Actra registrar API are shown as received.
+- The API classes follow the OpenAPI specification of the Actra registrar API (`GET <API URL>/openapi` with an API
   key). Read the current version before changing API calls; the repository keeps no copy. Mismatches between the API
   and its specification are fixed in the API, not worked around here.
 - Run the checks with `ddev composer check` (DDEV project without database, PHP 8.3). The module itself is checked in

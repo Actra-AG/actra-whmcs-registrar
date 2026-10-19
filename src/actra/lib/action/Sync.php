@@ -26,7 +26,7 @@ class Sync extends AbstractAction
             );
         } catch (Throwable $throwable) {
             $this->response = [
-                'error' => $throwable->getMessage(),
+                'error' => $this->getErrorMessage(throwable: $throwable),
             ];
             return;
         }

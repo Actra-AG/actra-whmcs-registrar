@@ -45,7 +45,6 @@ class ModifyNameserver extends AbstractAction
         try {
             new ApiUpdateHost(
                 apiClient: $this->getApiClient(),
-                registry: 'SWITCH',
                 nameserver: $nameserver,
                 newIpv4: $newIpv4,
                 removeIpv4: $removeIpv4,
@@ -54,7 +53,7 @@ class ModifyNameserver extends AbstractAction
             );
         } catch (Throwable $throwable) {
             $this->response = [
-                'error' => $throwable->getMessage(),
+                'error' => $this->getErrorMessage(throwable: $throwable),
             ];
             return;
         }

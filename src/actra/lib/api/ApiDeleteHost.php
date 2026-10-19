@@ -13,13 +13,12 @@ readonly class ApiDeleteHost
 {
     public function __construct(
         ApiClient $apiClient,
-        string $registry,
         string $nameserver
     ) {
         $apiClient->delete(
             path: 'deleteHost',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE,
             query: [
-                'registry' => $registry,
                 'hostname' => $nameserver,
             ]
         );

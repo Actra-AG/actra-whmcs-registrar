@@ -13,14 +13,15 @@ use JsonException;
 use RuntimeException;
 
 /**
- * Parses the response envelope of the Actra Domains REST API (`success`, `data`, `error`).
+ * Parses the response envelope of the Actra registrar API (`success`, `data`, `error`).
  */
 final class ApiResponse
 {
     /**
      * Returns the `data` object of a successful response.
      *
-     * @throws RuntimeException for a body that is not JSON (e.g. the HTML page of a proxy) or an unsuccessful response
+     * @throws RuntimeException for a body that is not JSON (e.g. the HTML page of a proxy)
+     * @throws ApiException for an unsuccessful response
      */
     public static function parse(string $path, int $httpStatusCode, string $body): ApiRecord
     {
@@ -40,12 +41,17 @@ final class ApiResponse
         $message = $error?->getNullableString(key: 'message') ?? 'API request failed';
         $code = $error?->getString(key: 'code') ?? '';
 
-        throw new RuntimeException(message: sprintf(
-            'API request "%s" failed with HTTP %d: %s%s',
-            $path,
-            $httpStatusCode,
-            $message,
-            $code === '' || $code === '0' ? '' : ' (code ' . $code . ')',
-        ));
+        throw new ApiException(
+            message: sprintf(
+                'API request "%s" failed with HTTP %d: %s%s',
+                $path,
+                $httpStatusCode,
+                $message,
+                $code === '' || $code === '0' ? '' : ' (code ' . $code . ')',
+            ),
+            httpStatusCode: $httpStatusCode,
+            errorCode: $code,
+            apiMessage: $message,
+        );
     }
 }

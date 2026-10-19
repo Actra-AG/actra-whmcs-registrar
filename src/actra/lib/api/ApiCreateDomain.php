@@ -41,6 +41,7 @@ readonly class ApiCreateDomain
         }
         $apiClient->post(
             path: 'createDomain',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE,
             body: $body,
         );
     }

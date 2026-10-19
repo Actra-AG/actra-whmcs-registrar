@@ -45,6 +45,7 @@ readonly class ApiUpdateDomain
         }
         $apiClient->patch(
             path: 'updateDomain',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE,
             query: [
                 'domainName' => $asciiDomainName,
             ],

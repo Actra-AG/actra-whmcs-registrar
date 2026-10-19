@@ -36,7 +36,6 @@ class RegisterNameserver extends AbstractAction
             $apiClient = $this->getApiClient();
             if (!(new ApiCheckHost(
                 apiClient: $apiClient,
-                registry: 'SWITCH',
                 nameserver: $nameserver
             ))->isAvailable) {
                 throw new RuntimeException(message: $this->translate(
@@ -52,7 +51,7 @@ class RegisterNameserver extends AbstractAction
             );
         } catch (Throwable $throwable) {
             $this->response = [
-                'error' => $throwable->getMessage(),
+                'error' => $this->getErrorMessage(throwable: $throwable),
             ];
             return;
         }

@@ -19,6 +19,7 @@ readonly class ApiCheckDomain
     ) {
         $response = $apiClient->get(
             path: 'checkDomain',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_QUERY,
             query: [
                 'domainName' => $asciiDomainName,
             ]

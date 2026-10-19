@@ -54,4 +54,31 @@ final class DomainContactTest extends TestCase
         $this->assertSame('', $contact->org);
         $this->assertSame('', $contact->addressRow2);
     }
+
+    public function testFromWhmcsDataArrayIsTheCounterpartOfGetWhmcsDataArray(): void
+    {
+        $data = [
+            'Name' => 'Jane Example',
+            'Organization' => 'Example Ltd',
+            'Street 1' => 'Example Street 1',
+            'Street 2' => 'PO Box',
+            'City' => 'Zurich',
+            'State' => '',
+            'Postcode' => '8000',
+            'Country' => 'CH',
+            'Email' => 'jane@example.com',
+            'Phone' => '+41.441234567',
+        ];
+
+        $this->assertSame($data, DomainContact::fromWhmcsDataArray(data: $data)->getWhmcsDataArray());
+    }
+
+    public function testFromWhmcsDataArrayUsesEmptyStringsForMissingFields(): void
+    {
+        $contact = DomainContact::fromWhmcsDataArray(data: ['Name' => 'Jane Example', 'Street 2' => null]);
+
+        $this->assertSame('Jane Example', $contact->name);
+        $this->assertSame('', $contact->addressRow2);
+        $this->assertSame('', $contact->phone);
+    }
 }

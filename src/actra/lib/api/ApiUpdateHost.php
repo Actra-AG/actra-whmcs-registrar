@@ -13,7 +13,6 @@ readonly class ApiUpdateHost
 {
     public function __construct(
         ApiClient $apiClient,
-        string $registry,
         string $nameserver,
         array $newIpv4,
         array $removeIpv4,
@@ -22,8 +21,8 @@ readonly class ApiUpdateHost
     ) {
         $apiClient->patch(
             path: 'updateHost',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE,
             query: [
-                'registry' => $registry,
                 'hostname' => $nameserver,
             ],
             body: [

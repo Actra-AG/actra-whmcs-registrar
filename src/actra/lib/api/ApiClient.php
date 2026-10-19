@@ -14,6 +14,14 @@ use WHMCS\Module\Registrar\Actra\action\Log;
 
 class ApiClient
 {
+    // Requests answered by the API itself (domain information from its cache, contacts)
+    public const int TIMEOUT_DEFAULT = 10;
+    // Requests that query the registry (availability, host information); longer than the registry timeout of the
+    // API (up to 30 seconds), so that its answer for an unreachable registry arrives
+    public const int TIMEOUT_REGISTRY_QUERY = 45;
+    // Requests that change objects at the registry (domains, hosts, DS records, auth codes)
+    public const int TIMEOUT_REGISTRY_CHANGE = 60;
+
     public function __construct(
         private readonly string $apiUrl,
         private readonly string $apiKey,
@@ -26,7 +34,7 @@ class ApiClient
     public function get(
         string $path,
         array $query = [],
-        int $timeoutInSeconds = 10,
+        int $timeoutInSeconds = ApiClient::TIMEOUT_DEFAULT,
     ): ApiRecord {
         return $this->request(
             method: 'GET',
@@ -45,7 +53,7 @@ class ApiClient
         string $path,
         array $query = [],
         array $body = [],
-        int $timeoutInSeconds = 10,
+        int $timeoutInSeconds = ApiClient::TIMEOUT_DEFAULT,
     ): ApiRecord {
         return $this->request(
             method: 'POST',
@@ -64,7 +72,7 @@ class ApiClient
         string $path,
         array $query = [],
         array $body = [],
-        int $timeoutInSeconds = 10,
+        int $timeoutInSeconds = ApiClient::TIMEOUT_DEFAULT,
     ): ApiRecord {
         return $this->request(
             method: 'PATCH',
@@ -81,7 +89,7 @@ class ApiClient
     public function delete(
         string $path,
         array $query = [],
-        int $timeoutInSeconds = 10,
+        int $timeoutInSeconds = ApiClient::TIMEOUT_DEFAULT,
     ): ApiRecord {
         return $this->request(
             method: 'DELETE',

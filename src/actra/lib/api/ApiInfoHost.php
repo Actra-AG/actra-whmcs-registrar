@@ -18,20 +18,18 @@ readonly class ApiInfoHost
 
     public function __construct(
         ApiClient $apiClient,
-        string $registry,
         string $hostname,
     ) {
         $response = $apiClient->get(
             path: 'infoHost',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_QUERY,
             query: [
-                'registry' => $registry,
                 'name' => $hostname,
             ],
         );
         $createdDate = $response->getString(key: 'createdDate');
         $this->host = new Host(
             name: $response->getString(key: 'name'),
-            roid: $response->getString(key: 'roid'),
             status: $response->getStringList(key: 'status'),
             ipv4List: $response->getStringList(key: 'ipv4List'),
             ipv6List: $response->getStringList(key: 'ipv6List'),

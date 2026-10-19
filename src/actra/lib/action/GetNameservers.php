@@ -26,7 +26,7 @@ class GetNameservers extends AbstractAction
             ))->nameservers;
         } catch (Throwable $throwable) {
             $this->nameservers = [
-                'error' => $throwable->getMessage(),
+                'error' => $this->getErrorMessage(throwable: $throwable),
             ];
         }
     }

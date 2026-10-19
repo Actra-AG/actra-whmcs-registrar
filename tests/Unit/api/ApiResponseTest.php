@@ -12,6 +12,7 @@ namespace WHMCS\Module\Registrar\Actra\tests\Unit\api;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
+use WHMCS\Module\Registrar\Actra\api\ApiException;
 use WHMCS\Module\Registrar\Actra\api\ApiResponse;
 
 final class ApiResponseTest extends TestCase
@@ -88,5 +89,33 @@ final class ApiResponseTest extends TestCase
         $this->expectExceptionMessage($expectedMessage);
 
         ApiResponse::parse(path: $path, httpStatusCode: $httpStatusCode, body: $body);
+    }
+
+    public function testParseThrowsApiExceptionWithStatusAndErrorCode(): void
+    {
+        try {
+            ApiResponse::parse(
+                path: 'updateDomain',
+                httpStatusCode: 409,
+                body: '{"success":false,"error":{"message":"The registry declined the contact change; an administrator '
+                    . 'checks it.","code":1004}}',
+            );
+            ApiResponseTest::fail('ApiException expected');
+        } catch (ApiException $apiException) {
+            $this->assertSame(409, $apiException->httpStatusCode);
+            $this->assertSame('1004', $apiException->errorCode);
+            $this->assertSame(
+                'The registry declined the contact change; an administrator checks it.',
+                $apiException->apiMessage,
+            );
+            $this->assertTrue($apiException->isContactChangeNeedsReview());
+        }
+    }
+
+    public function testErrorCode1004IsOnlyAContactChangeReviewWithHttp409(): void
+    {
+        $apiException = new ApiException(message: 'error', httpStatusCode: 400, errorCode: '1004', apiMessage: 'error');
+
+        $this->assertFalse($apiException->isContactChangeNeedsReview());
     }
 }

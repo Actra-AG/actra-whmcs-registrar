@@ -17,6 +17,7 @@ readonly class ApiRestoreDomain
     ) {
         $apiClient->post(
             path: 'restoreDomain',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE,
             query: [
                 'domainName' => $asciiDomainName,
             ]

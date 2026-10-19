@@ -21,7 +21,6 @@ class CreateRegistrant extends AbstractAction
         $params = $this->params;
         $this->identifier = (new ApiCreateContact(
             apiClient: $this->getApiClient(),
-            registry: 'SWITCH',
             domainContact: new DomainContact(
                 name: $params['fullname'],
                 org: $params['companyname'],

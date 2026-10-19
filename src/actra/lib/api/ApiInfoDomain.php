@@ -19,10 +19,6 @@ readonly class ApiInfoDomain
     public string $asciiName;
     /** @var array<string, string> nameservers by WHMCS key (ns1, ns2, …) */
     public array $nameservers;
-    public string $registrantIdentifier;
-    public string $techIdentifier;
-    public string $billingIdentifier;
-    public string $adminIdentifier;
     public ?DomainContact $registrant;
     public ?DomainContact $tech;
     public ?DomainContact $billing;
@@ -56,10 +52,6 @@ readonly class ApiInfoDomain
             $nameservers['ns' . ($index + 1)] = $nameserver;
         }
         $this->nameservers = $nameservers;
-        $this->registrantIdentifier = $response->getString(key: 'registrant');
-        $this->techIdentifier = $response->getString(key: 'techContact');
-        $this->billingIdentifier = $response->getString(key: 'billingContact');
-        $this->adminIdentifier = $response->getString(key: 'adminContact');
         // The API uses the keys registrant, admin, tech and billing
         $contacts = $response->getRecords(key: 'contacts');
         $this->registrant = array_key_exists(key: 'registrant', array: $contacts)

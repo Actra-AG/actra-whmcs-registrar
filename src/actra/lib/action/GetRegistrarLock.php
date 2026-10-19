@@ -25,7 +25,7 @@ class GetRegistrarLock extends AbstractAction
             ))->hasTransferLock ? 'locked' : 'unlocked';
         } catch (Throwable $throwable) {
             $this->result = [
-                'error' => $throwable->getMessage(),
+                'error' => $this->getErrorMessage(throwable: $throwable),
             ];
         }
     }

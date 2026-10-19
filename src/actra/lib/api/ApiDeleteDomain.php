@@ -17,6 +17,7 @@ readonly class ApiDeleteDomain
     ) {
         $apiClient->delete(
             path: 'deleteDomain',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE,
             query: [
                 'domainName' => $asciiDomainName,
             ]

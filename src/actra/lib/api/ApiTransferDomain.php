@@ -49,6 +49,7 @@ readonly class ApiTransferDomain
 
         $response = $apiClient->post(
             path: 'transferDomain',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE,
             body: $body,
         );
         $this->isActionPending = $response->getBool(key: 'isActionPending');

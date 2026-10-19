@@ -7,12 +7,12 @@ Actra Registrar Module for WHMCS.
 This module provides functionality for registering, transferring, and renewing domains through Actra's registrar API
 within the WHMCS platform.
 
-The module communicates with the Actra Domains REST API using bearer-token authentication and JSON requests.
+The module communicates with the Actra registrar API using bearer-token authentication and JSON requests.
 
 Domain properties such as the registration status, the transfer lock, and the restorable state are read from the
-normalized fields of the API response. The registry-specific status codes are therefore interpreted by the Actra Domains
-API rather than by this module, which requires an API that provides the `normalizedStatus` field and the derived
-boolean fields of the domain response.
+normalized fields of the API response. The registry-specific status codes are therefore interpreted by the Actra
+registrar API rather than by this module, which requires an API that provides the `normalizedStatus` field and the
+derived boolean fields of the domain response.
 
 ## Features
 
@@ -53,10 +53,26 @@ This module intentionally does not implement a local workaround for this issue, 
 would require changes outside the module directory, such as a global WHMCS hook, which is outside the deployment scope
 of this Composer-installed registrar module.
 
+## Requirements
+
+- WHMCS with PHP 8.3.
+- Module v0.7.0 and newer need the Actra registrar API v1.1.0 or newer. Older module versions need an older API
+  version; see the [CHANGELOG](CHANGELOG.md).
+
+## Contacts
+
+Contacts are created at Actra without a registry and are referenced by their public contact ID. Actra creates the
+contact at the registry of the domain when the domain is registered or changed, and reuses contacts with identical
+data. The module stores no contact IDs or registry handles.
+
+Contact changes are sent as a regular domain update. If the registry declines a change of contacts (for example
+because it requires a paid owner change), an administrator at Actra checks the change, and the module shows a
+corresponding error message.
+
 ## Transfer Behavior
 
-Incoming domain transfers submit WHMCS contact data directly to the Actra Domains API. The Actra Domains backend
-resolves the appropriate registry from the TLD and creates or reuses matching contacts automatically.
+Incoming domain transfers submit WHMCS contact data directly to the Actra registrar API. Actra resolves the appropriate
+registry from the TLD and creates or reuses matching contacts automatically.
 
 When available, separate WHMCS Admin, Tech, and Billing contact data is submitted for the transfer. If role-specific
 contact data is incomplete or unavailable, the module falls back to the registrant contact data.
@@ -64,8 +80,9 @@ contact data is incomplete or unavailable, the module falls back to the registra
 ## Languages
 
 The texts of the module are available in German and English. WHMCS shows them in the language of the admin in the
-admin area and in the language of the client in the client area; other languages fall back to English. Error messages
-of the Actra Domains API are shown in English.
+admin area and in the language of the client in the client area; other languages fall back to English. The module
+explains contact errors and an unreachable registry in these languages; other error messages of the Actra registrar API
+are shown in English.
 
 ## Installation
 
@@ -105,7 +122,7 @@ Read the [CHANGELOG](CHANGELOG.md) before updating: minor versions may require c
 1. Log in to your WHMCS Admin Area.
 2. Navigate to **System Settings > Domain Registrars**.
 3. Activate the **actra** module.
-4. Enter the API URL (base URL of the Actra Domains REST API, ending with `/api/v1`), your API key and your customer
+4. Enter the API URL (base URL of the Actra registrar API, ending with `/api/v1`), your API key and your customer
    number at Actra, and configure the available options.
 
 ## Development

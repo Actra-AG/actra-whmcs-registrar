@@ -25,6 +25,7 @@ readonly class ApiCreateHost
     ) {
         $apiClient->post(
             path: 'createHost',
+            timeoutInSeconds: ApiClient::TIMEOUT_REGISTRY_CHANGE,
             body: [
                 'hostname' => $nameserver,
                 'ipv4' => $ipv4,

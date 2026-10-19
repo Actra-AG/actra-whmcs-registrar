@@ -23,12 +23,11 @@ class DeleteNameserver extends AbstractAction
         try {
             new ApiDeleteHost(
                 apiClient: $this->getApiClient(),
-                registry: 'SWITCH',
                 nameserver: $nameserver
             );
         } catch (Throwable $throwable) {
             $this->response = [
-                'error' => $throwable->getMessage(),
+                'error' => $this->getErrorMessage(throwable: $throwable),
             ];
             return;
         }
