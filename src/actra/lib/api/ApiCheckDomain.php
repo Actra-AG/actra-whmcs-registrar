@@ -12,6 +12,8 @@ namespace WHMCS\Module\Registrar\Actra\api;
 readonly class ApiCheckDomain
 {
     public bool $isAvailable;
+    // Whether the registry offers the domain at a premium price; null if the registry's check does not tell
+    public ?bool $isPremium;
 
     public function __construct(
         ApiClient $apiClient,
@@ -25,5 +27,6 @@ readonly class ApiCheckDomain
             ]
         );
         $this->isAvailable = $response->getBool(key: 'isAvailable');
+        $this->isPremium = $response->getNullableBool(key: 'isPremium');
     }
 }

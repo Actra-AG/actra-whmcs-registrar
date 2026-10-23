@@ -21,9 +21,10 @@ final class ApiResponse
      * Returns the `data` object of a successful response.
      *
      * @throws RuntimeException for a body that is not JSON (e.g. the HTML page of a proxy)
+     * @param string|null $retryAfter value of the `Retry-After` header, if sent
      * @throws ApiException for an unsuccessful response
      */
-    public static function parse(string $path, int $httpStatusCode, string $body): ApiRecord
+    public static function parse(string $path, int $httpStatusCode, string $body, ?string $retryAfter): ApiRecord
     {
         try {
             $decoded = json_decode(json: $body, associative: true, flags: JSON_THROW_ON_ERROR);
@@ -52,6 +53,17 @@ final class ApiResponse
             httpStatusCode: $httpStatusCode,
             errorCode: $code,
             apiMessage: $message,
+            retryAfterSeconds: ApiResponse::parseRetryAfter(value: $retryAfter),
         );
+    }
+
+    /**
+     * Seconds of a `Retry-After` header; null for a missing header or an HTTP date, which the API does not send.
+     */
+    public static function parseRetryAfter(?string $value): ?int
+    {
+        $value = trim(string: $value ?? '');
+
+        return preg_match(pattern: '/^\d{1,9}$/', subject: $value) === 1 ? (int) $value : null;
     }
 }

@@ -23,6 +23,7 @@ final class ApiResponseTest extends TestCase
             path: 'checkDomain',
             httpStatusCode: 200,
             body: '{"success":true,"data":{"isAvailable":true}}',
+            retryAfter: null,
         );
 
         $this->assertTrue($data->getBool(key: 'isAvailable'));
@@ -30,7 +31,7 @@ final class ApiResponseTest extends TestCase
 
     public function testParseReturnsEmptyRecordForSuccessfulResponseWithoutData(): void
     {
-        $data = ApiResponse::parse(path: 'deleteDomain', httpStatusCode: 200, body: '{"success":true}');
+        $data = ApiResponse::parse(path: 'deleteDomain', httpStatusCode: 200, body: '{"success":true}', retryAfter: null);
 
         $this->assertSame('', $data->getString(key: 'anything'));
     }
@@ -88,7 +89,7 @@ final class ApiResponseTest extends TestCase
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage($expectedMessage);
 
-        ApiResponse::parse(path: $path, httpStatusCode: $httpStatusCode, body: $body);
+        ApiResponse::parse(path: $path, httpStatusCode: $httpStatusCode, body: $body, retryAfter: null);
     }
 
     public function testParseThrowsApiExceptionWithStatusAndErrorCode(): void
@@ -99,6 +100,7 @@ final class ApiResponseTest extends TestCase
                 httpStatusCode: 409,
                 body: '{"success":false,"error":{"message":"The registry declined the contact change; an administrator '
                     . 'checks it.","code":1004}}',
+                retryAfter: null,
             );
             ApiResponseTest::fail('ApiException expected');
         } catch (ApiException $apiException) {
@@ -109,7 +111,45 @@ final class ApiResponseTest extends TestCase
                 $apiException->apiMessage,
             );
             $this->assertTrue($apiException->isContactChangeNeedsReview());
+            $this->assertNull($apiException->retryAfterSeconds);
         }
+    }
+
+    public function testParseThrowsApiExceptionWithRetryAfterSeconds(): void
+    {
+        try {
+            ApiResponse::parse(
+                path: 'checkDomain',
+                httpStatusCode: 429,
+                body: '{"success":false,"error":{"message":"Too many registry checks.","code":1010}}',
+                retryAfter: '42',
+            );
+            ApiResponseTest::fail('ApiException expected');
+        } catch (ApiException $apiException) {
+            $this->assertSame(ApiException::ERROR_CODE_RATE_LIMITED, $apiException->errorCode);
+            $this->assertSame(42, $apiException->retryAfterSeconds);
+        }
+    }
+
+    /**
+     * @return iterable<string, array{string|null, int|null}>
+     */
+    public static function retryAfterValues(): iterable
+    {
+        yield 'seconds' => ['30', 30];
+        yield 'zero' => ['0', 0];
+        yield 'surrounding whitespace' => [' 30 ', 30];
+        yield 'missing header' => [null, null];
+        yield 'empty' => ['', null];
+        yield 'HTTP date' => ['Wed, 21 Oct 2026 07:28:00 GMT', null];
+        yield 'negative' => ['-1', null];
+        yield 'too large' => ['9999999999', null];
+    }
+
+    #[DataProvider('retryAfterValues')]
+    public function testParseRetryAfter(?string $value, ?int $expectedSeconds): void
+    {
+        $this->assertSame($expectedSeconds, ApiResponse::parseRetryAfter(value: $value));
     }
 
     public function testErrorCode1004IsOnlyAContactChangeReviewWithHttp409(): void

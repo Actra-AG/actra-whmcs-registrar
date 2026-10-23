@@ -1104,35 +1104,10 @@ parameters:
 			count: 1
 			path: src/actra/lib/action/TransferDomain.php
 
-		-
-			rawMessage: 'Parameter $handle of function curl_errno expects CurlHandle, (CurlHandle|false) given.'
-			identifier: argument.type
-			count: 1
-			path: src/actra/lib/api/ApiClient.php
 
-		-
-			rawMessage: 'Parameter $handle of function curl_error expects CurlHandle, (CurlHandle|false) given.'
-			identifier: argument.type
-			count: 1
-			path: src/actra/lib/api/ApiClient.php
 
-		-
-			rawMessage: 'Parameter $handle of function curl_exec expects CurlHandle, (CurlHandle|false) given.'
-			identifier: argument.type
-			count: 1
-			path: src/actra/lib/api/ApiClient.php
 
-		-
-			rawMessage: 'Parameter $handle of function curl_getinfo expects CurlHandle, (CurlHandle|false) given.'
-			identifier: argument.type
-			count: 1
-			path: src/actra/lib/api/ApiClient.php
 
-		-
-			rawMessage: 'Parameter $handle of function curl_setopt expects CurlHandle, (CurlHandle|false) given.'
-			identifier: argument.type
-			count: 8
-			path: src/actra/lib/api/ApiClient.php
 
 		-
 			rawMessage: 'Parameter $value of function curl_setopt expects non-empty-string|null, string given.'

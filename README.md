@@ -56,8 +56,15 @@ of this Composer-installed registrar module.
 ## Requirements
 
 - WHMCS with PHP 8.3.
-- Module v0.7.0 and newer need the Actra registrar API v1.1.0 or newer. Older module versions need an older API
-  version; see the [CHANGELOG](CHANGELOG.md).
+- Module v0.7.0 and newer need the Actra registrar API v1.1.0 or newer, domain registrations with module v0.8.0 and
+  newer need API v1.5.0 or newer. Older module versions need an older API version; see the
+  [CHANGELOG](CHANGELOG.md).
+
+## Premium Domains
+
+The module registers domains only at the normal price of the TLD. It refuses to register a premium domain (a domain
+with a higher price at the registry) and a domain for which the registry does not tell whether it is a premium domain,
+and asks to contact Actra.
 
 ## Contacts
 
@@ -81,7 +88,8 @@ contact data is incomplete or unavailable, the module falls back to the registra
 
 The texts of the module are available in German and English. WHMCS shows them in the language of the admin in the
 admin area and in the language of the client in the client area; other languages fall back to English. The module
-explains contact errors and an unreachable registry in these languages; other error messages of the Actra registrar API
+explains contact errors, an unreachable registry, refused premium domains, an API key without the right for a
+function and too many availability checks in these languages; other error messages of the Actra registrar API
 are shown in English.
 
 ## Installation

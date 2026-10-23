@@ -39,7 +39,18 @@ return [
         . 'Details: {details}',
     'error.unknownContact' => 'Der Kontakt ist unbekannt. Details: {details}',
     'error.registryNotReachable' => 'Die Registry ist zurzeit nicht erreichbar. Bitte versuchen Sie es später erneut.',
+    'error.apiKeyNotAllowed' => 'Der API-Schlüssel des Moduls darf diese Funktion der Registrar-API von Actra nicht '
+        . 'verwenden. Bitte prüfen Sie den API-Schlüssel in den Einstellungen des Registrar-Moduls oder wenden Sie sich '
+        . 'an Actra.',
+    'error.rateLimited' => 'Zu viele Verfügbarkeitsabfragen mit dem API-Schlüssel des Moduls. Bitte versuchen Sie es '
+        . 'später erneut.',
+    'error.rateLimitedRetryAfter' => 'Zu viele Verfügbarkeitsabfragen mit dem API-Schlüssel des Moduls. Bitte versuchen '
+        . 'Sie es in {seconds} Sekunden erneut.',
     'error.customerNumberInvalid' => 'Die Moduleinstellung «Kundennummer» muss eine positive ganze Zahl sein.',
     'error.domainNotAvailable' => '{domain}: Die Domain ist nicht verfügbar',
+    'error.domainPremium' => '{domain} ist eine Premium-Domain mit einem höheren Preis bei der Registry und wird nicht '
+        . 'zum normalen Preis registriert. Bitte wenden Sie sich an Actra.',
+    'error.domainPremiumUnknown' => 'Die Registry gibt nicht an, ob {domain} eine Premium-Domain mit einem höheren '
+        . 'Preis ist, deshalb wird sie nicht automatisch registriert. Bitte wenden Sie sich an Actra.',
     'error.nameserverNotAvailable' => '{nameserver}: Der Nameserver ist nicht verfügbar',
 ];

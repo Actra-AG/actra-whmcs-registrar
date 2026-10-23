@@ -25,15 +25,21 @@ final class ApiException extends RuntimeException
     public const string ERROR_CODE_UNKNOWN_CONTACT = '1007';
     // HTTP 503: the registry did not answer (in time)
     public const string ERROR_CODE_REGISTRY_NOT_REACHABLE = '1008';
+    // HTTP 403: the API key may not use the endpoint (configuration of the key at Actra)
+    public const string ERROR_CODE_API_KEY_NOT_ALLOWED = '1009';
+    // HTTP 429: too many registry checks (checkDomain, checkHost) with the API key
+    public const string ERROR_CODE_RATE_LIMITED = '1010';
 
     /**
      * @param string $apiMessage error message of the API as received
+     * @param int|null $retryAfterSeconds seconds until the request may be repeated (`Retry-After` header), if sent
      */
     public function __construct(
         string $message,
         public readonly int $httpStatusCode,
         public readonly string $errorCode,
         public readonly string $apiMessage,
+        public readonly ?int $retryAfterSeconds = null,
     ) {
         parent::__construct(message: $message);
     }

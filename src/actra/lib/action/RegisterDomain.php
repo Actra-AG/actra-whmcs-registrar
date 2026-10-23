@@ -26,12 +26,20 @@ class RegisterDomain extends AbstractAction
         $domainName = $this->getStringParam(key: 'domain_punycode');
         try {
             $apiClient = $this->getApiClient();
-            if (!(new ApiCheckDomain(
+            $checkDomain = new ApiCheckDomain(
                 apiClient: $apiClient,
                 asciiDomainName: $domainName,
-            ))->isAvailable) {
+            );
+            if (!$checkDomain->isAvailable) {
                 throw new RuntimeException(message: $this->translate(
                     key: 'error.domainNotAvailable',
+                    replacements: ['domain' => $domainName],
+                ));
+            }
+            // WHMCS would charge the normal price of the TLD; a registry that does not tell may charge a premium too
+            if ($checkDomain->isPremium !== false) {
+                throw new RuntimeException(message: $this->translate(
+                    key: $checkDomain->isPremium === true ? 'error.domainPremium' : 'error.domainPremiumUnknown',
                     replacements: ['domain' => $domainName],
                 ));
             }

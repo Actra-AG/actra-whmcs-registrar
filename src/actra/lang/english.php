@@ -39,7 +39,16 @@ return [
         . 'registry and cannot be made here. Please contact Actra. Details: {details}',
     'error.unknownContact' => 'The contact is unknown. Details: {details}',
     'error.registryNotReachable' => 'The registry is currently not reachable. Please try again later.',
+    'error.apiKeyNotAllowed' => 'The API key of the module may not use this function of the Actra registrar API. '
+        . 'Please check the API key in the settings of the registrar module or contact Actra.',
+    'error.rateLimited' => 'Too many availability checks with the API key of the module. Please try again later.',
+    'error.rateLimitedRetryAfter' => 'Too many availability checks with the API key of the module. Please try again in '
+        . '{seconds} seconds.',
     'error.customerNumberInvalid' => 'The module setting "Customer Number" must be a positive integer.',
     'error.domainNotAvailable' => '{domain}: Domain is not available',
+    'error.domainPremium' => '{domain} is a premium domain with a higher price at the registry and is not registered '
+        . 'at the normal price. Please contact Actra.',
+    'error.domainPremiumUnknown' => 'The registry does not tell whether {domain} is a premium domain with a higher '
+        . 'price, so it is not registered automatically. Please contact Actra.',
     'error.nameserverNotAvailable' => '{nameserver}: Nameserver is not available',
 ];

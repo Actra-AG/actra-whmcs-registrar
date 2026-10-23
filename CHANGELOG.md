@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.8.0 - 2026-10-23
+
+Domain registrations require the Actra registrar API v1.5.0 or newer. With an older API version, the module refuses
+every registration, because the API does not tell whether a domain is a premium domain.
+
+### Fixed
+
+- Premium domains (domains with a higher price at the registry, e.g. some `.online` domains) could be registered at
+  the normal price of the TLD. The module now refuses to register a premium domain and asks to contact Actra. Domains
+  for which the registry does not tell whether they are premium domains are refused as well.
+
+### Changed
+
+- When the API key may not use a function of the Actra registrar API, the module asks to check the API key in the
+  settings of the registrar module or to contact Actra, in the language of the user.
+- When there are too many availability checks with the API key, the module asks to try again later, with the seconds
+  to wait if the API sends them, in the language of the user.
+
 ## v0.7.0 - 2026-10-19
 
 Requires the Actra registrar API v1.1.0 or newer, which Actra provides together with this release. Older module

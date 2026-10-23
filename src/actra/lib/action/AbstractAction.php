@@ -63,8 +63,8 @@ abstract class AbstractAction
 
     /**
      * Error message for WHMCS: the contact errors of the API are explained in the language of the user, with the
-     * details of the API, an unreachable registry with a request to try again later; other errors are shown as
-     * received.
+     * details of the API, an unreachable registry and a rate limit with a request to try again later, an API key
+     * without the right for the endpoint as configuration problem; other errors are shown as received.
      */
     protected function getErrorMessage(Throwable $throwable): string
     {
@@ -76,6 +76,17 @@ abstract class AbstractAction
         }
         if ($throwable->errorCode === ApiException::ERROR_CODE_REGISTRY_NOT_REACHABLE) {
             return $this->translate(key: 'error.registryNotReachable');
+        }
+        if ($throwable->errorCode === ApiException::ERROR_CODE_API_KEY_NOT_ALLOWED) {
+            return $this->translate(key: 'error.apiKeyNotAllowed');
+        }
+        if ($throwable->errorCode === ApiException::ERROR_CODE_RATE_LIMITED) {
+            return $throwable->retryAfterSeconds === null
+                ? $this->translate(key: 'error.rateLimited')
+                : $this->translate(
+                    key: 'error.rateLimitedRetryAfter',
+                    replacements: ['seconds' => (string) $throwable->retryAfterSeconds],
+                );
         }
         $key = match ($throwable->errorCode) {
             ApiException::ERROR_CODE_CONTACT_NOT_USABLE => 'error.contactNotUsable',

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace WHMCS\Module\Registrar\Actra\api;
 
+use CurlHandle;
 use RuntimeException;
 use WHMCS\Module\Registrar\Actra\action\Log;
 
@@ -124,6 +125,9 @@ class ApiClient
         }
 
         $ch = curl_init();
+        if ($ch === false) {
+            throw new RuntimeException(message: 'Connection Error: cURL could not be initialized');
+        }
         curl_setopt(
             handle: $ch,
             option: CURLOPT_URL,
@@ -176,6 +180,21 @@ class ApiClient
             ],
         );
 
+        // The Retry-After header of a rate-limited request tells when to try again
+        $retryAfter = null;
+        curl_setopt(
+            handle: $ch,
+            option: CURLOPT_HEADERFUNCTION,
+            value: static function (CurlHandle $ch, string $header) use (&$retryAfter): int {
+                $parts = explode(separator: ':', string: $header, limit: 2);
+                if (count(value: $parts) === 2 && strtolower(string: trim(string: $parts[0])) === 'retry-after') {
+                    $retryAfter = trim(string: $parts[1]);
+                }
+
+                return strlen(string: $header);
+            },
+        );
+
         $response = curl_exec(handle: $ch);
         $errorNumber = curl_errno(handle: $ch);
         if ($errorNumber !== 0) {
@@ -209,6 +228,7 @@ class ApiClient
             path: $path,
             httpStatusCode: $httpStatusCode,
             body: $responseBody,
+            retryAfter: $retryAfter,
         );
     }
 }
