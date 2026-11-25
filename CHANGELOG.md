@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.9.0 - 2026-11-25
+
+Requires the Actra registrar API v2.43.0 or newer, which no longer deletes domains for registrars. With an older API
+version, "Request Delete" and "Cancel Deletion" fail.
+
+### Changed
+
+- "Request Delete" no longer deletes the domain at once: it lets the domain expire. Actra deletes `.ch` and `.li`
+  domains one day before the renewal and lets the domains of other TLDs expire on their expiry date. It must be
+  requested a few days before the expiry date; when it is too late, the error of the Actra registrar API is shown.
+
+### Added
+
+- Admin button "Cancel Deletion" in the domain details: undoes "Request Delete", the domain is renewed automatically
+  again.
+
 ## v0.8.0 - 2026-10-23
 
 Domain registrations require the Actra registrar API v1.5.0 or newer. With an older API version, the module refuses

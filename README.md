@@ -20,6 +20,7 @@ derived boolean fields of the domain response.
 - Transfer Domain
 - Renew Domain (where applicable)
 - Get EPP Code
+- Request Delete (lets the domain expire) and Cancel Deletion
 - Manage Nameservers
 - Manage Contact Details
 - DNSSEC Support
@@ -57,7 +58,8 @@ of this Composer-installed registrar module.
 
 - WHMCS with PHP 8.3.
 - Module v0.7.0 and newer need the Actra registrar API v1.1.0 or newer, domain registrations with module v0.8.0 and
-  newer need API v1.5.0 or newer. Older module versions need an older API version; see the
+  newer need API v1.5.0 or newer, "Request Delete" and "Cancel Deletion" with module v0.9.0 and newer need API v2.43.0
+  or newer. Older module versions need an older API version; see the
   [CHANGELOG](CHANGELOG.md).
 
 ## Premium Domains

@@ -21,6 +21,7 @@ return [
     'setting.log.description' => 'Tick to enable extra logging to module log file.',
     'button.dnssec' => 'DNSSEC Records',
     'button.restoreDomain' => 'Restore Domain',
+    'button.cancelDeletion' => 'Cancel Deletion',
     'dnssec.title' => 'DNSSEC Management',
     'dnssec.saved' => 'The change has been saved.',
     'dnssec.keyTag' => 'Key Tag',

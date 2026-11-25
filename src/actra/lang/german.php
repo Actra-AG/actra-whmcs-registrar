@@ -20,6 +20,7 @@ return [
     'setting.log.description' => 'Aktivieren, um zusätzlich in die Protokolldatei des Moduls zu schreiben.',
     'button.dnssec' => 'DNSSEC-Einträge',
     'button.restoreDomain' => 'Domain wiederherstellen',
+    'button.cancelDeletion' => 'Löschung aufheben',
     'dnssec.title' => 'DNSSEC-Verwaltung',
     'dnssec.saved' => 'Die Änderung wurde gespeichert.',
     'dnssec.keyTag' => 'Key Tag',

@@ -121,18 +121,6 @@ parameters:
 			path: src/actra/actra.php
 
 		-
-			rawMessage: 'Function actra_RequestDelete() has parameter $params with no value type specified in iterable type array.'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/actra/actra.php
-
-		-
-			rawMessage: 'Function actra_RequestDelete() return type has no value type specified in iterable type array.'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/actra/actra.php
-
-		-
 			rawMessage: 'Function actra_RestoreDomain() has parameter $params with no value type specified in iterable type array.'
 			identifier: missingType.iterableValue
 			count: 1
@@ -857,30 +845,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/actra/lib/action/RegisterNameserver.php
-
-		-
-			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\RequestDelete::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'
-			identifier: method.missingOverride
-			count: 1
-			path: src/actra/lib/action/RequestDelete.php
-
-		-
-			rawMessage: Offset 'domain_punycode' might not exist on array.
-			identifier: offsetAccess.notFound
-			count: 1
-			path: src/actra/lib/action/RequestDelete.php
-
-		-
-			rawMessage: 'Parameter $asciiDomainName of class WHMCS\Module\Registrar\Actra\api\ApiDeleteDomain constructor expects string, mixed given.'
-			identifier: argument.type
-			count: 1
-			path: src/actra/lib/action/RequestDelete.php
-
-		-
-			rawMessage: Property WHMCS\Module\Registrar\Actra\action\RequestDelete::$response type has no value type specified in iterable type array.
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/actra/lib/action/RequestDelete.php
 
 		-
 			rawMessage: 'Method WHMCS\Module\Registrar\Actra\action\RestoreDomain::execute() overrides method WHMCS\Module\Registrar\Actra\action\AbstractAction::execute() but is missing the #[\Override] attribute.'

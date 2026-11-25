@@ -8,6 +8,7 @@
 declare(strict_types=1);
 
 use WHMCS\Domain\Registrar\Domain;
+use WHMCS\Module\Registrar\Actra\action\CancelDeletion;
 use WHMCS\Module\Registrar\Actra\action\ConfigValidate;
 use WHMCS\Module\Registrar\Actra\action\DeleteNameserver;
 use WHMCS\Module\Registrar\Actra\action\GetConfigArray;
@@ -234,7 +235,10 @@ function actra_DeleteNameserver(array $params): array
 }
 
 /**
- * Called when a domain deletion request comes from WHMCS.
+ * Called by the "Request Delete" button: lets the domain expire (see RequestDelete).
+ *
+ * @param array<string, mixed> $params
+ * @return array{success: true}|array{error: string}
  */
 function actra_RequestDelete(array $params): array
 {
@@ -288,7 +292,17 @@ function actra_AdminCustomButtonArray($params): array
 {
     return [
         Translator::current()->get(key: 'button.restoreDomain') => 'RestoreDomain',
+        Translator::current()->get(key: 'button.cancelDeletion') => 'CancelDeletion',
     ];
+}
+
+/**
+ * @param array<string, mixed> $params
+ * @return array{success: true}|array{error: string}
+ */
+function actra_CancelDeletion(array $params): array
+{
+    return (new CancelDeletion(params: $params))->response;
 }
 
 function actra_RestoreDomain(array $params): array
